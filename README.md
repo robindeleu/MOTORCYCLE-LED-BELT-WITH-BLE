@@ -5,4 +5,8 @@
 * Emma Dossche
 * Pixie Moortgat
 * Robin Deleu
-* Roelten Jacbos
+* Roelten Jacobs
+
+## Regulations
+
+The legislation for wearing lighting on clothes for cyclists and motorcyclists on public roads in Belgium is briefly mentioned in [this document (click here)](./Regulations.md).
