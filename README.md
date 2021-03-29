@@ -1,2 +1,8 @@
 # MOTORCYCLE-LED-BELT-WITH-BLE
-Project for projectweek 2021
+
+## Groepsleden
+
+* Emma Dossche
+* Pixie Moortgat
+* Robin Deleu
+* Roelten Jacbos
