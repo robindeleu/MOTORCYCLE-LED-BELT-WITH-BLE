@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto" max-width="344">
     <v-img
-      src="https://cdn.antratek.nl/media/product/159/led-rgb-strip-addressable-5m-apa102-com-14016-e9c.jpg"
+      src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80"
       height="200px"
     ></v-img>
 
@@ -51,7 +51,7 @@
         </v-container>
 
         <v-container class="text-center">
-          <h3>Change collor</h3>
+          <h3>Change color</h3>
         </v-container>
         <v-card class="e4" elevation="0" tile>
           <v-responsive
@@ -125,6 +125,8 @@
             v-model="ex3.val"
             :label="ex3.label"
             :thumb-color="ex3.color"
+            max="255"
+            min="0"
             thumb-label="always"
           ></v-slider>
         </v-container>
@@ -158,7 +160,7 @@ export default {
     red: 255,
     green: 0,
     blue: 0,
-    ex3: { label: '', val: 50, color: 'red' },
+    ex3: { label: "", val: 10, color: "primary" },
   }),
   watch: {
     group() {
