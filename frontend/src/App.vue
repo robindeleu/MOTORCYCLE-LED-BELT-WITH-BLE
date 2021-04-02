@@ -1,60 +1,152 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-app-bar app color="primary" dark
+      ><v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+      <div class="d-flex align-center">
+        <h3>Motorcycle LED belt</h3>
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            outlined
+            fab
+            small
+            rounded
+            color="white"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon
+              class="mx-2"
+              dark
+              outlined
+              color="white"
+              v-bind="attrs"
+              v-on="on"
+            >
+              mdi-plus
+            </v-icon>
+          </v-btn>
+        </template>
+        <span>Add belt</span>
+      </v-tooltip>
 
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="ma-2"
+            outlined
+            rounded
+            color="white"
+            v-bind="attrs"
+            v-on="on"
+          >
+            Previously connected
+          </v-btn>
+        </template>
+        <span>Show all previously connected devices</span>
+      </v-tooltip>
+
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="ma-2"
+            outlined
+            rounded
+            color="white"
+            v-bind="attrs"
+            v-on="on"
+          >
+            Connected belt's
+          </v-btn>
+        </template>
+        <span>Show current connected belt's</span>
+      </v-tooltip>
+    </v-app-bar>
     <v-main>
-      <HelloWorld/>
+      <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+        <v-list nav dense>
+          <v-list-item-group v-model="group" active-class="secondary">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="secondary">mdi-account-check-outline</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Register</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="secondary"
+                  >mdi-account-arrow-right-outline</v-icon
+                >
+              </v-list-item-icon>
+              <v-list-item-title>Login</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="secondary">mdi-bluetooth-audio</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Add Belt</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="secondary">mdi-devices</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Owned belt's</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="secondary">mdi-bluetooth-connect</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Connected belt's</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon color="secondary"
+                  >mdi-account-arrow-left-outline</v-icon
+                >
+              </v-list-item-icon>
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+      <v-container>
+        <v-row justify="center">
+          <v-col cols="9">
+            <belt-card />
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
+import BeltCard from "./components/BeltCard.vue";
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    HelloWorld,
+    BeltCard,
   },
 
   data: () => ({
-    //
+    drawer: false,
+    group: null,
+    show: false,
   }),
+  watch: {
+    group() {
+      this.drawer = false;
+    },
+  },
 };
 </script>
