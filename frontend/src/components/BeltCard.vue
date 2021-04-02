@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="344">
+  <v-card class="mx-auto" max-width="400">
     <v-img
       src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80"
       height="200px"
@@ -151,7 +151,7 @@ export default {
     padding: 8,
     lineCap: "round",
     gradient: gradients[0],
-    value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+    value: [1, 4, 2, 9, 5, 6, 5, 6, 9, 7, 1, 3, 6, 6, 10, 0, 3, 1, 10, 4, 10, 7, 7, 1, 10, 8, 7, 0, 9, 4, 1, 1, 10, 6, 10, 10, 8, 1, 2, 1, 0, 6, 3, 2, 0, 7, 8, 9, 3, 3, 9, 5, 4, 5, 8, 7, 9, 5, 3, 2, 0, 5, 6, 3, 2, 1, 10, 6, 3, 7, 10, 4, 9, 7, 6, 3, 2, 5, 3, 5, 8, 1, 0, 4, 5, 2, 3, 1, 4, 2, 5, 4, 9, 0, 6, 9, 4, 0, 9, 3],
     gradientDirection: "top",
     gradients,
     fill: false,
