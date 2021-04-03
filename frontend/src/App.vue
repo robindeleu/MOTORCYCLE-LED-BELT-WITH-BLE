@@ -122,10 +122,6 @@
         <v-row justify="center">
           <v-col cols="9">
             <belt-card />
-            <belt-card />
-            <belt-card />
-            <belt-card />
-            <belt-card />
           </v-col>
         </v-row>
       </v-container>
