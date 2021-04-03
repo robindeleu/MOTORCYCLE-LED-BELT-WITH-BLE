@@ -19,6 +19,7 @@
             color="white"
             v-bind="attrs"
             v-on="on"
+            class="button"
           >
             <v-icon
               class="mx-2"
@@ -38,14 +39,25 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            class="ma-2"
             outlined
+            fab
+            small
             rounded
             color="white"
             v-bind="attrs"
             v-on="on"
+            class="button"
           >
-            Previously connected
+            <v-icon
+              class="mx-2"
+              dark
+              outlined
+              color="white"
+              v-bind="attrs"
+              v-on="on"
+            >
+              mdi-history
+            </v-icon>
           </v-btn>
         </template>
         <span>Show all previously connected devices</span>
@@ -54,14 +66,25 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            class="ma-2"
             outlined
+            fab
+            small
             rounded
             color="white"
             v-bind="attrs"
-            v-on="on"
+            v-on="on"            
+            class="button"
           >
-            Connected belt's
+            <v-icon
+              class="mx-2"
+              dark
+              outlined
+              color="white"
+              v-bind="attrs"
+              v-on="on"
+            >
+              mdi-bluetooth-connect
+            </v-icon>
           </v-btn>
         </template>
         <span>Show current connected belt's</span>
@@ -125,6 +148,7 @@
           </v-col>
         </v-row>
       </v-container>
+      
     </v-main>
   </v-app>
 </template>
@@ -150,3 +174,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.button{
+  margin-right: 5px;
+  margin-left: 5px;  
+}
+</style>
