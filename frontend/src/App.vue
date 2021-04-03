@@ -143,7 +143,11 @@
       </v-navigation-drawer>
       <v-container>
         <v-row justify="center">
-          <v-col cols="9">
+          <v-col cols="9" md="4">
+            <belt-card />
+            <belt-card />
+            <belt-card />
+            <belt-card />
             <belt-card />
           </v-col>
         </v-row>
