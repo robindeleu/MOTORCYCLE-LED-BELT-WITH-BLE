@@ -19,10 +19,10 @@
               v-bind="attrs"
               v-on="on"
             >
-              Disconect
+              Disconnect
             </v-btn>
           </template>
-          <span>Disconect this belt</span>
+          <span>Disconnect this belt</span>
         </v-tooltip>
 
         <v-spacer></v-spacer>
