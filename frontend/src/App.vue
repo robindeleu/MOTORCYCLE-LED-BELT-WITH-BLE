@@ -20,6 +20,7 @@
             v-bind="attrs"
             v-on="on"
             class="button"
+            @click="showAllDevices()"
           >
             <v-icon
               class="mx-2"
@@ -159,6 +160,8 @@
 
 <script>
 import BeltCard from "./components/BeltCard.vue";
+import bluetoothAPI from './services/bluetoothAPI.js';
+
 export default {
   name: "App",
 
@@ -176,6 +179,13 @@ export default {
       this.drawer = false;
     },
   },
+
+  methods:{
+    showAllDevices(){
+      bluetoothAPI.showAllDevices();
+    }
+  },
+
 };
 </script>
 <style scoped>
