@@ -18,6 +18,7 @@
               color="orange lighten-2"
               v-bind="attrs"
               v-on="on"
+              @click="disconnect()"
             >
               Disconnect
             </v-btn>
@@ -139,6 +140,8 @@
 
 <script>
 const gradients = [["#1feaea", "#ffd200", "#f72047"]];
+import bluetoothAPI from '../services/bluetoothAPI.js';
+
 export default {
   name: "BeltCard",
 
@@ -269,6 +272,14 @@ export default {
     group() {
       this.drawer = false;
     },
+  },
+
+  methods:{
+    disconnect(){
+      console.log("disconnect");
+      let device = null; // DEVICE SHOULD BE STORED SOMEWHERE ELSE AND SHOULD CONTAIN THE DEVICE THAT IS RETURNED AFTER CONENCTING
+      bluetoothAPI.disconnect(device);
+    }
   },
 };
 </script>

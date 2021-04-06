@@ -4,6 +4,7 @@ export default{
             return navigator.bluetooth;
             // True: Web BLE works
       },
+
       showAllDevices(){
     
             let options = {
@@ -11,18 +12,24 @@ export default{
             };
                   
             this.requestDevice(options);
-    
-
       },
-      showFilteredDevices(name){ // NOT TESTED YET!    
+
+      showFilteredNameDevices(name){ // NOT TESTED YET!    
     
             let options = {
                   name: name
             };
 
             this.requestDevice(options); 
+      },
 
-            
+      showFilteredPrefixDevices(nameprefix){ // NOT TESTED YET!
+
+            let options = {
+                  namePrefix: nameprefix
+            }
+
+            this.requestDevice(options); 
       },
 
       requestDevice(options){
@@ -41,6 +48,12 @@ export default{
                   console.log("Web BLE is not available!");
             }
       },
+
+      disconnect(device){ // NOT TESTED YET!
+            if(device.gatt.connected){
+                  device.gatt.disconnect();
+            }
+      }
             
 }
 
