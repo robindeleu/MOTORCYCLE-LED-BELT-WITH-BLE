@@ -17,7 +17,9 @@ export default{
       showFilteredNameDevices(name){ // NOT TESTED YET!    
     
             let options = {
-                  name: name
+                  filters:[
+                        {name: name}
+                  ]
             };
 
             this.requestDevice(options); 
@@ -26,7 +28,9 @@ export default{
       showFilteredPrefixDevices(nameprefix){ // NOT TESTED YET!
 
             let options = {
-                  namePrefix: nameprefix
+                  filters:[
+                        {namePrefix: nameprefix}
+                  ]       
             }
 
             this.requestDevice(options); 
