@@ -277,8 +277,7 @@ export default {
   methods:{
     disconnect(){
       console.log("disconnect");
-      let device = null; // DEVICE SHOULD BE STORED SOMEWHERE ELSE AND SHOULD CONTAIN THE DEVICE THAT IS RETURNED AFTER CONENCTING
-      bluetoothAPI.disconnect(device);
+      bluetoothAPI.disconnect(this.$store.getters.BluetoothBelt);
     }
   },
 };

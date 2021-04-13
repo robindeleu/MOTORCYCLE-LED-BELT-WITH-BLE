@@ -14,7 +14,7 @@ export default{
             this.requestDevice(options);
       },
 
-      showFilteredNameDevices(name){ // NOT TESTED YET!    
+      showFilteredNameDevices(name){ 
     
             let options = {
                   filters:[
@@ -25,7 +25,7 @@ export default{
             this.requestDevice(options); 
       },
 
-      showFilteredPrefixDevices(nameprefix){ // NOT TESTED YET!
+      showFilteredPrefixDevices(nameprefix){
 
             let options = {
                   filters:[
@@ -43,6 +43,7 @@ export default{
                   navigator.bluetooth.requestDevice(options).then(device => {
                         console.log('Name: ' + device.name);
                         console.log('Device objecft' + device);
+                        this.$store.dispatch("connect",device);
                   }).catch(error => {
                         console.log(error);
                   })

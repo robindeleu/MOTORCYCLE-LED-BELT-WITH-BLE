@@ -185,7 +185,6 @@ export default {
       bluetoothAPI.showAllDevices();
       // bluetoothAPI.showFilteredPrefixDevices("LE-Bo")
       // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin")
-      
     }
   },
 
