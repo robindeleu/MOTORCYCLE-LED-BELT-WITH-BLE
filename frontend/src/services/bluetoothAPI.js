@@ -42,7 +42,7 @@ export default{
 
                   navigator.bluetooth.requestDevice(options).then(device => {
                         console.log('Name: ' + device.name);
-                        console.log('Device objecft' + device);
+                        console.log(device);
                         this.$store.dispatch("connect",device);
                   }).catch(error => {
                         console.log(error);
