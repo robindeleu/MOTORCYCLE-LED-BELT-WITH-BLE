@@ -8,14 +8,18 @@ export default new Vuex.Store({
     BluetoothBelt:{}
   },
   mutations: {
-    addDevice(state, BluetoothBelt) {
+    setDevice(state, BluetoothBelt) {
       state.BluetoothBelt = BluetoothBelt
     }
   },
   actions: {
     connect({commit},BluetoothBelt){
       console.log("Save device in store...", BluetoothBelt);
-      commit("addDevice",BluetoothBelt);
+      commit("setDevice",BluetoothBelt);
+    },
+    disconnect({commit}){
+      console.log("Deletedevice out off store...");
+      commit("setDevice",{});
     },
   },
   getters: {
