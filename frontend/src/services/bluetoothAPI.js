@@ -58,6 +58,7 @@ export default{
       disconnect(device){ // NOT TESTED YET!
             if(device.gatt.connected){
                   device.gatt.disconnect();
+                  this.$store.dispatch("disconnect");
             }
       }
             
