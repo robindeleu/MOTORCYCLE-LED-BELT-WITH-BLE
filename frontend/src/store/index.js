@@ -18,7 +18,7 @@ export default new Vuex.Store({
       commit("setDevice",BluetoothBelt);
     },
     disconnect({commit}){
-      console.log("Deletedevice out off store...");
+      console.log("Delete device out off store...");
       commit("setDevice",{});
     },
   },
