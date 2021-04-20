@@ -17,7 +17,7 @@ export default new Vuex.Store({
   },
   actions: {
     connect({commit},BluetoothBelt){
-      console.log("Save device in store...");
+      console.log("Save device in store...", BluetoothBelt);
       commit("addDevice",BluetoothBelt);
     },
   },
