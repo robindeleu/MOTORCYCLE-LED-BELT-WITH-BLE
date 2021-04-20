@@ -13,7 +13,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    BluetoothBelt: state => state.BluetoothBelt,
+    getBluetoothBelt(state) {
+      return state.BluetoothBelt;
+    },
   },
   actions: {
     connect({commit},BluetoothBelt){
