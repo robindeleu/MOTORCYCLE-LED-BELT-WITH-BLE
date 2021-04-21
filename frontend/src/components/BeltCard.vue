@@ -295,7 +295,7 @@ export default {
   methods: {
     disconnect() {
       console.log("disconnect");
-      bluetoothAPI.disconnect(this.$store.getters.BluetoothBelt);
+      bluetoothAPI.disconnect(this.$store.getters.BluetoothBelt, this.$store);
     },
   },
 };

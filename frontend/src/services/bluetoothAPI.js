@@ -25,7 +25,7 @@ export default{
             this.requestDevice(options); 
       },
 
-      showFilteredPrefixDevices(nameprefix){
+      showFilteredPrefixDevices(nameprefix, store){
 
             let options = {
                   filters:[
@@ -33,10 +33,10 @@ export default{
                   ]       
             }
 
-            this.requestDevice(options); 
+            this.requestDevice(options, store); 
       },
 
-      requestDevice(options){
+      requestDevice(options, store){
             if(this.isWebBLEAvailable) {
                   console.log("Searching devices");
 
@@ -45,7 +45,8 @@ export default{
                         console.log(device);
                         device.gatt.connect(); // Connect device
                         console.log(device);
-                        this.$store.dispatch("connect",device); // Save device to store
+                        store.dispatch("connect",device); // Save device to store
+                        console.log(store.getters.getBluetoothBelt);
                   }).catch(error => {
                         console.log(error);
                   })
@@ -57,11 +58,11 @@ export default{
             }
       },
 
-      disconnect(device){ // NOT TESTED YET!
+      disconnect(device, store){ // NOT TESTED YET!
             // device.gatt.disconnect();
             if(device.gatt.connected){
                   device.gatt.disconnect();
-                  this.$store.dispatch("disconnect");
+                  store.dispatch("disconnect");
             }
       }
             
