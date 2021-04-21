@@ -58,7 +58,7 @@ export default{
             }
       },
 
-      disconnect(device, store){ // NOT TESTED YET!
+      disconnect(device, store){ // NOT TESTED YET! //Don't work
             // device.gatt.disconnect();
             if(device.gatt.connected){
                   device.gatt.disconnect();
