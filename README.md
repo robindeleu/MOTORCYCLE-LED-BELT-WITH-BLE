@@ -1,5 +1,6 @@
 # MOTORCYCLE-LED-BELT-WITH-BLE
 
+![GitHub repo size](https://img.shields.io/github/repo-size/robindeleu/MOTORCYCLE-LED-BELT-WITH-BLE)
 ![GitHub language count](https://img.shields.io/github/languages/count/robindeleu/MOTORCYCLE-LED-BELT-WITH-BLE)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c2490a46-1ba6-4da8-a90c-76dfa192d067/deploy-status)](https://app.netlify.com/sites/ledbelt/deploys)
 
