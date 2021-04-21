@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/robindeleu/MOTORCYCLE-LED-BELT-WITH-BLE">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
+    <img src="img/Black and White Circle Personal Logo 2.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">MOTORCYCLE-LED-BELT-WITH-BLE</h3>
