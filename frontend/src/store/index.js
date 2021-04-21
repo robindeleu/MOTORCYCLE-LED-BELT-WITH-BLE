@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    BluetoothBelt:{},
+    BluetoothBelt:{id: "nCeOcwpsqYotSL5SSfY4tA==", name: "LE-Bose Robin", gatt: BluetoothRemoteGATTServer, ongattserverdisconnected: null},
     HistoryBluetoothBelt:{}
   },
   mutations: {
