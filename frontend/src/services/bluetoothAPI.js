@@ -58,11 +58,11 @@ export default{
       },
 
       disconnect(device){ // NOT TESTED YET!
-            device.gatt.disconnect();
-            // if(device.gatt.connected){
-            //       device.gatt.disconnect();
-            //       this.$store.dispatch("disconnect");
-            // }
+            // device.gatt.disconnect();
+            if(device.gatt.connected){
+                  device.gatt.disconnect();
+                  this.$store.dispatch("disconnect");
+            }
       }
             
 }
