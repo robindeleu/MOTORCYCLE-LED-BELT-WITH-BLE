@@ -33,3 +33,8 @@ De presentatie voor morgen werd kort overlopen, nog enkele details moeten toegev
 
 Roelten zal zijn updates op GitHub zetten.
 
+## Meeting 6 21 april 8h15
+
+Robin en Emma: Vue frontend verder afwerken, store werkende gemaakt, connect werkt, conditional rendering voor v-cards. Vue disconnect knop moet nog aangepast worden zodat deze werkt
+
+Roelten: arduino nano bluetooth programma met temperatuur, luchtvochtigheid werkt. Batterij level werkt bijna.
