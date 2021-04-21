@@ -5,6 +5,16 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/robindeleu/MOTORCYCLE-LED-BELT-WITH-BLE)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c2490a46-1ba6-4da8-a90c-76dfa192d067/deploy-status)](https://app.netlify.com/sites/ledbelt/deploys)
 
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#Groepsleden">Groepsleden</a></li>
+    <li><a href="#Regulations">Regulations</a></li>
+    <li><a href="#Week report">Week report</a></li>
+    <li><a href="#Frontend">Frontend</a></li>
+  </ol>
+</details>
+
 ## Groepsleden
 
 * Emma Dossche
