@@ -45,7 +45,7 @@ export default{
                         console.log(device);
                         device.gatt.connect(); // Connect device
                         console.log(device);
-                        this.$store.dispatch("connect",device);
+                        this.$store.dispatch("connect",device); // Save device to store
                   }).catch(error => {
                         console.log(error);
                   })
