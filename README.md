@@ -12,6 +12,7 @@
     <li><a href="#Regulations">Regulations</a></li>
     <li><a href="#Week report">Week report</a></li>
     <li><a href="#Frontend">Frontend</a></li>
+    <li><a href="#Built With">Built With</a></li>
   </ol>
 </details>
 
@@ -33,3 +34,8 @@ The legislation for wearing lighting on clothes for cyclists and motorcyclists o
 ## Frontend
 
 [This is the link](https://ledbelt.netlify.app/) to the website that you can use to connect to you're ledbelt.
+
+## Built With
+
+* [Vue](https://vuejs.org/)
+* [Vuetify](https://vuetifyjs.com/en/)
