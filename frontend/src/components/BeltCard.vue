@@ -40,6 +40,7 @@
       <v-expand-transition>
         <div v-show="show">
           <v-container class="text-center">
+            <p>Store object {{storeDevice}}</p>
             <h3>Battery level</h3>
             <v-sparkline
               :value="value"
