@@ -73,7 +73,7 @@
             rounded
             color="white"
             v-bind="attrs"
-            v-on="on"            
+            v-on="on"
             class="button"
           >
             <v-icon
@@ -153,14 +153,13 @@
           </v-col>
         </v-row>
       </v-container>
-      
     </v-main>
   </v-app>
 </template>
 
 <script>
 import BeltCard from "./components/BeltCard.vue";
-import bluetoothAPI from './services/bluetoothAPI.js';
+import bluetoothAPI from "./services/bluetoothAPI.js";
 
 export default {
   name: "App",
@@ -180,19 +179,18 @@ export default {
     },
   },
 
-  methods:{
-    showAllDevices(){
+  methods: {
+    showAllDevices() {
       bluetoothAPI.showAllDevices();
       // bluetoothAPI.showFilteredPrefixDevices("LE-Bo")
       // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin")
-    }
+    },
   },
-
 };
 </script>
 <style scoped>
-.button{
+.button {
   margin-right: 5px;
-  margin-left: 5px;  
+  margin-left: 5px;
 }
 </style>

@@ -144,7 +144,7 @@
 
 <script>
 const gradients = [["#1feaea", "#ffd200", "#f72047"]];
-import bluetoothAPI from '../services/bluetoothAPI.js';
+import bluetoothAPI from "../services/bluetoothAPI.js";
 
 export default {
   name: "BeltCard",
@@ -278,11 +278,11 @@ export default {
     },
   },
 
-  methods:{
-    disconnect(){
+  methods: {
+    disconnect() {
       console.log("disconnect");
       bluetoothAPI.disconnect(this.$store.getters.BluetoothBelt);
-    }
+    },
   },
 };
 </script>
