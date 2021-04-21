@@ -144,12 +144,12 @@
       </v-navigation-drawer>
       <v-container>
         <v-row justify="center">
-          <!-- <v-col cols="9" md="4"
-          v-for="storeDevice in storeDevices" :key="storeDevice.id"> -->
-          <v-col cols="9" md="4">
+          <v-col cols="9" md="4"
+          v-for="test in storeDevice" :key="test.id">
+          <!-- <v-col cols="9" md="4"> -->
             <belt-card 
-              :id="storeDevice.id"
-              :name="storeDevice.name"
+              :id="test.id"
+              :name="test.name"
             />
           </v-col>
         </v-row>
