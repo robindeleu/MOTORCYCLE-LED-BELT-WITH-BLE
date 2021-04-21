@@ -277,7 +277,11 @@ export default {
       this.drawer = false;
     },
   },
-
+  computed: {
+    storeDevice() {
+      return this.$store.getters.getBluetoothBelt;
+    },
+  },
   methods: {
     disconnect() {
       console.log("disconnect");
