@@ -5,13 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    BluetoothBelt:[{id: "nCeOcwpsqYotSL5SSfY4tA==", name: "Motorcycle LED Kat"},{id: "jsgjkhfdsgfsdkjsdSfY4tA==", name: "Motorcycle LED Tom"}],
+    BluetoothBelt:[],
     HistoryBluetoothBelt:{}
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
 
-      state.BluetoothBelt = state.BluetoothBelt.push(BluetoothBelt) //adding object to array!
+      state.BluetoothBelt.push(BluetoothBelt) //adding object to array!
     },
     setDeviceHistory(state, BluetoothBelt) {
       state.HistoryBluetoothBelt = Object.assign(state.HistoryBluetoothBelt, BluetoothBelt)
