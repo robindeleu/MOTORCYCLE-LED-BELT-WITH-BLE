@@ -144,13 +144,12 @@
       </v-navigation-drawer>
       <v-container>
         <v-row justify="center">
-          <v-col cols="9" md="4">
-            <p>Store object {{storeDevice}}</p>
-            <belt-card />
-            <belt-card />
-            <belt-card />
-            <belt-card />
-            <belt-card />
+          <v-col cols="9" md="4"
+          >
+            <belt-card 
+              :id="storeDevice.id"
+              :name="storeDevice.name"
+            />
           </v-col>
         </v-row>
       </v-container>

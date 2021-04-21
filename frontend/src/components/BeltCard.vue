@@ -10,8 +10,8 @@
         height="200"
       ></v-parallax>
 
-      <v-card-title> {{storeDevice.name}} </v-card-title>
-      <v-card-subtitle> Belt id {{storeDevice.id}} </v-card-subtitle>
+      <v-card-title> {{name}} </v-card-title>
+      <v-card-subtitle> Belt id {{id}} </v-card-subtitle>
 
       <v-card-actions>
         <v-tooltip bottom>
@@ -41,7 +41,8 @@
       <v-expand-transition>
         <div v-show="show">
           <v-container class="text-center">
-            <p>Store object {{storeDevice}}</p>
+            <p>props id: {{id}}</p>
+            <p>props name: {{name}}</p>
             <h3>Battery level</h3>
             <v-sparkline
               :value="value"
@@ -150,7 +151,14 @@ import bluetoothAPI from "../services/bluetoothAPI.js";
 
 export default {
   name: "BeltCard",
-
+  props: {
+      id: {
+        type: String
+      },
+      name:{
+        type: String
+      }
+    },
   components: {},
 
   data: () => ({
