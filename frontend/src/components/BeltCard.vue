@@ -10,7 +10,8 @@
         height="200"
       ></v-parallax>
 
-      <v-card-title> Belt from ........ </v-card-title>
+      <v-card-title> {{storeDevice.name}} </v-card-title>
+      <v-card-subtitle> Belt id {{storeDevice.id}} </v-card-subtitle>
 
       <v-card-actions>
         <v-tooltip bottom>
