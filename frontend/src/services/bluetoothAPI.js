@@ -43,6 +43,8 @@ export default{
                   navigator.bluetooth.requestDevice(options).then(device => {
                         console.log('Name: ' + device.name);
                         console.log(device);
+                        device.gatt.connect();
+                        console.log(device);
                         this.$store.dispatch("connect",device);
                   }).catch(error => {
                         console.log(error);
