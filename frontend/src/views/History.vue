@@ -10,7 +10,7 @@
                 </v-col>
             </v-row>
             <div v-if="storeDevice.length===0">
-                <h1>NO DEVICES FOUND</h1>
+                <h1>NO DEVICES FOUND</h1> <!--TO CHANGE!-->
             </div>
         </v-container>
     </div>

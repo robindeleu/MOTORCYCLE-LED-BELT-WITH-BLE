@@ -37,7 +37,6 @@
 </template>
 
 <script>
-//import bluetoothAPI from "../services/bluetoothAPI.js";
 
 export default {
   name: "HistoryCard",
@@ -75,8 +74,5 @@ export default {
 </script>
 
 <style scoped>
-.e4 {
-  width: 400px;
-  margin: auto;
-}
+
 </style>
