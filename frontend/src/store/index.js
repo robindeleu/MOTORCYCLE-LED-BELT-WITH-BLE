@@ -14,10 +14,13 @@ export default new Vuex.Store({
       state.BluetoothBelt.push(BluetoothBelt) //adding object to array!
     },
     setDeviceHistory(state, BluetoothBelt) {
-      state.HistoryBluetoothBelt = Object.assign(state.HistoryBluetoothBelt, BluetoothBelt)
+      state.HistoryBluetoothBelt.push(BluetoothBelt)
     },
     deleteDevice(state, index){
       state.BluetoothBelt.splice(index,1);
+    },
+    deleteDeviceHistory(state, index){
+      state.HistoryBluetoothBelt.splice(index,1);
     }
   },
   actions: {
@@ -27,9 +30,13 @@ export default new Vuex.Store({
       commit("setDeviceHistory",BluetoothBelt);
     },
     disconnect({commit},i){
-      console.log("Delete device out off store...");
+      console.log("Delete device out of the store...");
       commit("deleteDevice",i);
     },
+    deleteHistoryDevice({commit},index){
+      console.log("Delete device out of history");
+      commit("deleteDeviceHistory",index);
+    }
   },
   getters: {
     getBluetoothBelt(state) {
