@@ -1,18 +1,48 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-container>
+        <v-row justify="center">
+          <v-col cols="9" md="4"
+          v-for="test in storeDevice" :key="test.id">
+          <!-- <v-col cols="9" md="4"> -->
+            <belt-card 
+              :id="test.id"
+              :name="test.name"
+            />
+          </v-col>
+        </v-row>
+        <div v-if="storeDevice.length===0">
+        <v-row justify="center" >
+          <v-col cols="9" md="4">
+            <DefaultCard 
+        />
+          </v-col>
+        </v-row>
+        </div>
+      </v-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+import BeltCard from "../components/BeltCard.vue";
+import DefaultCard from "../components/DefaultCard.vue";
+
 
 export default {
   name: 'Home',
+
   components: {
-    HelloWorld
-  }
+    BeltCard,
+    DefaultCard
+  },
+
+  computed: {
+    storeDevice() {
+      return this.$store.getters.getBluetoothBelt;
+    },
+  },
+  
 }
 </script>

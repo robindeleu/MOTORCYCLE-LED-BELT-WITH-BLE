@@ -36,30 +36,32 @@
         </template>
         <span>Add belt</span>
       </v-tooltip>
-
+   
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            outlined
-            fab
-            small
-            rounded
-            color="white"
-            v-bind="attrs"
-            v-on="on"
-            class="button"
-          >
-            <v-icon
-              class="mx-2"
-              dark
+          <router-link to="/history">
+            <v-btn
               outlined
+              fab
+              small
+              rounded
               color="white"
               v-bind="attrs"
               v-on="on"
+              class="button"
             >
-              mdi-history
-            </v-icon>
-          </v-btn>
+              <v-icon
+                class="mx-2"
+                dark
+                outlined
+                color="white"
+                v-bind="attrs"
+                v-on="on"
+              >
+                mdi-history
+              </v-icon>
+            </v-btn>
+          </router-link>
         </template>
         <span>Show all previously connected devices</span>
       </v-tooltip>
@@ -142,11 +144,12 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-      <v-container>
+      <router-view/>  
+      <!--<v-container>
         <v-row justify="center">
           <v-col cols="9" md="4"
           v-for="test in storeDevice" :key="test.id">
-          <!-- <v-col cols="9" md="4"> -->
+          <v-col cols="9" md="4">
             <belt-card 
               :id="test.id"
               :name="test.name"
@@ -161,34 +164,34 @@
           </v-col>
         </v-row>
         </div>
-      </v-container>
+      </v-container>-->
     </v-main>
   </v-app>
 </template>
 
 <script>
-import BeltCard from "./components/BeltCard.vue";
-import DefaultCard from "./components/DefaultCard.vue";
+//import BeltCard from "./components/BeltCard.vue";
+//import DefaultCard from "./components/DefaultCard.vue";
 import bluetoothAPI from "./services/bluetoothAPI.js";
 
 export default {
   name: "App",
 
-  components: {
-    BeltCard,
-    DefaultCard
-  },
+  // components: {
+  //   BeltCard,
+  //   DefaultCard
+  // },
 
   data: () => ({
     drawer: false,
     group: null,
     show: false,
   }),
-  computed: {
-    storeDevice() {
-      return this.$store.getters.getBluetoothBelt;
-    },
-  },
+  // computed: {
+  //   storeDevice() {
+  //     return this.$store.getters.getBluetoothBelt;
+  //   },
+  // },
   watch: {
     group() {
       this.drawer = false;

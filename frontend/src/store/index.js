@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    BluetoothBelt:[{id:"45563"}],
+    BluetoothBelt:[],
     HistoryBluetoothBelt:{}
   },
   mutations: {
