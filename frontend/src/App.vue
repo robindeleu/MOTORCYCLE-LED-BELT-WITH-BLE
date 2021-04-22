@@ -4,7 +4,7 @@
       ><v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <div class="d-flex align-center">
-        <h3>Motorcycle LED belt</h3>
+        <router-link class="text-decoration-none white--text" to="/"><h3>Motorcycle LED belt</h3></router-link>
       </div>
 
       <v-spacer></v-spacer>
@@ -20,6 +20,7 @@
             v-bind="attrs"
             v-on="on"
             class="button"
+            @click="showAllDevices()"
           >
             <v-icon
               class="mx-2"
@@ -35,57 +36,61 @@
         </template>
         <span>Add belt</span>
       </v-tooltip>
-
+   
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            outlined
-            fab
-            small
-            rounded
-            color="white"
-            v-bind="attrs"
-            v-on="on"
-            class="button"
-          >
-            <v-icon
-              class="mx-2"
-              dark
+          <router-link to="/history">
+            <v-btn
               outlined
+              fab
+              small
+              rounded
               color="white"
               v-bind="attrs"
               v-on="on"
+              class="button"
             >
-              mdi-history
-            </v-icon>
-          </v-btn>
+              <v-icon
+                class="mx-2"
+                dark
+                outlined
+                color="white"
+                v-bind="attrs"
+                v-on="on"
+              >
+                mdi-history
+              </v-icon>
+            </v-btn>
+          </router-link>
         </template>
         <span>Show all previously connected devices</span>
       </v-tooltip>
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            outlined
-            fab
-            small
-            rounded
-            color="white"
-            v-bind="attrs"
-            v-on="on"            
-            class="button"
-          >
-            <v-icon
-              class="mx-2"
-              dark
+          <router-link to="/">
+            <v-btn
               outlined
+              fab
+              small
+              rounded
               color="white"
               v-bind="attrs"
               v-on="on"
+              class="button"
             >
-              mdi-bluetooth-connect
-            </v-icon>
-          </v-btn>
+              <v-icon
+                class="mx-2"
+                dark
+                outlined
+                color="white"
+                v-bind="attrs"
+                v-on="on"
+              >
+                mdi-bluetooth-connect
+              </v-icon>
+            </v-btn>
+            </router-link>
         </template>
         <span>Show current connected belt's</span>
       </v-tooltip>
@@ -114,21 +119,26 @@
               <v-list-item-icon>
                 <v-icon color="secondary">mdi-bluetooth-audio</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Add Belt</v-list-item-title>
+              <v-list-item-title @click="showAllDevices()">Add Belt</v-list-item-title>
             </v-list-item>
 
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="secondary">mdi-devices</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Owned belt's</v-list-item-title>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="secondary">mdi-bluetooth-connect</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Connected belt's</v-list-item-title>
-            </v-list-item>
+            <router-link class="text-decoration-none" to="/history">
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon color="secondary">mdi-devices</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Owned belt's</v-list-item-title>
+              </v-list-item>
+            </router-link>
+
+            <router-link class="text-decoration-none" to="/">
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon color="secondary">mdi-bluetooth-connect</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Connected belt's</v-list-item-title>
+              </v-list-item>
+            </router-link>
 
             <v-list-item>
               <v-list-item-icon>
@@ -141,46 +151,72 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-      <v-container>
+      <router-view/>  
+      <!--<v-container>
         <v-row justify="center">
+          <v-col cols="9" md="4"
+          v-for="test in storeDevice" :key="test.id">
           <v-col cols="9" md="4">
-            <belt-card />
-            <belt-card />
-            <belt-card />
-            <belt-card />
-            <belt-card />
+            <belt-card 
+              :id="test.id"
+              :name="test.name"
+            />
           </v-col>
         </v-row>
-      </v-container>
-      
+        <div v-if="storeDevice.length===0">
+        <v-row justify="center" >
+          <v-col cols="9" md="4">
+            <DefaultCard 
+        />
+          </v-col>
+        </v-row>
+        </div>
+      </v-container>-->
     </v-main>
   </v-app>
 </template>
 
 <script>
-import BeltCard from "./components/BeltCard.vue";
+//import BeltCard from "./components/BeltCard.vue";
+//import DefaultCard from "./components/DefaultCard.vue";
+import bluetoothAPI from "./services/bluetoothAPI.js";
+
 export default {
   name: "App",
 
-  components: {
-    BeltCard,
-  },
+  // components: {
+  //   BeltCard,
+  //   DefaultCard
+  // },
 
   data: () => ({
     drawer: false,
     group: null,
     show: false,
   }),
+  // computed: {
+  //   storeDevice() {
+  //     return this.$store.getters.getBluetoothBelt;
+  //   },
+  // },
   watch: {
     group() {
       this.drawer = false;
     },
   },
+
+  methods: {
+    showAllDevices() {
+      // bluetoothAPI.showAllDevices(this.$store);
+      bluetoothAPI.showFilteredPrefixDevices("LEDBELT", this.$store)
+      // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin", this.$store)
+    },
+  },
 };
 </script>
 <style scoped>
-.button{
+.button {
   margin-right: 5px;
-  margin-left: 5px;  
+  margin-left: 5px;
 }
 </style>

@@ -1,12 +1,17 @@
 <template>
   <v-container>
     <v-card class="mx-auto" max-width="300">
-      <v-img
+      <!-- <v-img
         src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80"
         height="200px"
-      ></v-img>
+      ></v-img> -->
+      <v-parallax
+        src="https://media.istockphoto.com/photos/watercolor-textured-background-picture-id887755698?k=6&m=887755698&s=612x612&w=0&h=_yEUF8gLpWjZv5IgwuWkecNVt4X4P7vpuFBKCWIuR44="
+        height="200"
+      ></v-parallax>
 
-      <v-card-title> Belt from ........ </v-card-title>
+      <v-card-title> {{name}} </v-card-title>
+      <v-card-subtitle> Belt id {{id}} </v-card-subtitle>
 
       <v-card-actions>
         <v-tooltip bottom>
@@ -18,6 +23,7 @@
               color="orange lighten-2"
               v-bind="attrs"
               v-on="on"
+              @click="disconnect(id)"
             >
               Disconnect
             </v-btn>
@@ -35,6 +41,8 @@
       <v-expand-transition>
         <div v-show="show">
           <v-container class="text-center">
+            <p>props id: {{id}}</p>
+            <p>props name: {{name}}</p>
             <h3>Battery level</h3>
             <v-sparkline
               :value="value"
@@ -139,9 +147,18 @@
 
 <script>
 const gradients = [["#1feaea", "#ffd200", "#f72047"]];
+import bluetoothAPI from "../services/bluetoothAPI.js";
+
 export default {
   name: "BeltCard",
-
+  props: {
+      id: {
+        type: String
+      },
+      name:{
+        type: String
+      }
+    },
   components: {},
 
   data: () => ({
@@ -268,6 +285,17 @@ export default {
   watch: {
     group() {
       this.drawer = false;
+    },
+  },
+  computed: {
+    storeDevice() {
+      return this.$store.getters.getBluetoothBelt;
+    },
+  },
+  methods: {
+    disconnect(id) {
+      console.log("disconnect ", id);
+      bluetoothAPI.disconnect(id, this.$store);
     },
   },
 };
