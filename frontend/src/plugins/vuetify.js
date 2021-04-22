@@ -3,7 +3,8 @@ import Vuetify from 'vuetify/lib/framework';
 
 Vue.use(Vuetify);
 
-export default new Vuetify({theme: {
+export default new Vuetify({
+  theme: {
     themes: {
       light: {
         primary: '#FFC107',
@@ -16,4 +17,14 @@ export default new Vuetify({theme: {
       },
     },
   },
+  pwa: {
+    name: 'LedBelt',
+    themeColor: '#FFC107',
+    msTileColor: '#000000',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: 'black',
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      swSrc: 'dev/sw.js',
+    }}
 });
