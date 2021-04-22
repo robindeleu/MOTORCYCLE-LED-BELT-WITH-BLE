@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     BluetoothBelt:[],
-    HistoryBluetoothBelt:{}
+    HistoryBluetoothBelt:[]
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
@@ -34,6 +34,9 @@ export default new Vuex.Store({
   getters: {
     getBluetoothBelt(state) {
       return state.BluetoothBelt;
+    },
+    getHistoryBluetoothBelt(state){
+      return state.HistoryBluetoothBelt;
     },
   },
   modules: {

@@ -5,16 +5,16 @@ export default{
             // True: Web BLE works
       },
 
-      showAllDevices(){
+      showAllDevices(store){
     
             let options = {
                   acceptAllDevices: true
             };
                   
-            this.requestDevice(options);
+            this.requestDevice(options, store);
       },
 
-      showFilteredNameDevices(name){ 
+      showFilteredNameDevices(name, store){ 
     
             let options = {
                   filters:[
@@ -22,7 +22,7 @@ export default{
                   ]
             };
 
-            this.requestDevice(options); 
+            this.requestDevice(options, store); 
       },
 
       showFilteredPrefixDevices(nameprefix, store){
@@ -58,7 +58,7 @@ export default{
             }
       },
 
-      disconnect(id, store){ // NOT TESTED YET!
+      disconnect(id, store){
             // device.gatt.disconnect();
             let i = 0;
             while (i < store.getters.getBluetoothBelt.length){
