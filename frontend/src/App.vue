@@ -153,6 +153,8 @@
             />
           </v-col>
         </v-row>
+        <DefaultCard 
+        />
       </v-container>
     </v-main>
   </v-app>
@@ -160,6 +162,7 @@
 
 <script>
 import BeltCard from "./components/BeltCard.vue";
+import DefaultCard from "./components/DefaultCard.vue";
 import bluetoothAPI from "./services/bluetoothAPI.js";
 
 export default {
@@ -167,6 +170,7 @@ export default {
 
   components: {
     BeltCard,
+    DefaultCard
   },
 
   data: () => ({
