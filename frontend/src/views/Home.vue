@@ -2,9 +2,7 @@
   <div class="home">
     <v-container>
         <v-row justify="center">
-          <v-col cols="9" md="4"
-          v-for="test in storeDevice" :key="test.id">
-          <!-- <v-col cols="9" md="4"> -->
+          <v-col cols="9" md="4" v-for="test in storeDevice" :key="test.id">
             <belt-card 
               :id="test.id"
               :name="test.name"
@@ -12,14 +10,14 @@
           </v-col>
         </v-row>
         <div v-if="storeDevice.length===0">
-        <v-row justify="center" >
-          <v-col cols="9" md="4">
-            <DefaultCard 
-        />
-          </v-col>
-        </v-row>
+          <v-row justify="center" >
+            <v-col cols="9" md="4">
+              <DefaultCard 
+          />
+            </v-col>
+          </v-row>
         </div>
-      </v-container>
+    </v-container>
   </div>
 </template>
 
