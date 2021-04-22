@@ -119,21 +119,26 @@
               <v-list-item-icon>
                 <v-icon color="secondary">mdi-bluetooth-audio</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Add Belt</v-list-item-title>
+              <v-list-item-title @click="showAllDevices()">Add Belt</v-list-item-title>
             </v-list-item>
 
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="secondary">mdi-devices</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Owned belt's</v-list-item-title>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="secondary">mdi-bluetooth-connect</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Connected belt's</v-list-item-title>
-            </v-list-item>
+            <router-link class="text-decoration-none" to="/history">
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon color="secondary">mdi-devices</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Owned belt's</v-list-item-title>
+              </v-list-item>
+            </router-link>
+
+            <router-link class="text-decoration-none" to="/">
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon color="secondary">mdi-bluetooth-connect</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Connected belt's</v-list-item-title>
+              </v-list-item>
+            </router-link>
 
             <v-list-item>
               <v-list-item-icon>
