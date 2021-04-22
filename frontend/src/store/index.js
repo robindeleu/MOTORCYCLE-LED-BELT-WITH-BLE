@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    BluetoothBelt:[],
+    BluetoothBelt:[{id:"45563"}],
     HistoryBluetoothBelt:{}
   },
   mutations: {
@@ -15,6 +15,9 @@ export default new Vuex.Store({
     },
     setDeviceHistory(state, BluetoothBelt) {
       state.HistoryBluetoothBelt = Object.assign(state.HistoryBluetoothBelt, BluetoothBelt)
+    },
+    deleteDevice(state, index){
+      state.BluetoothBelt.splice(index,1);
     }
   },
   actions: {
@@ -23,9 +26,9 @@ export default new Vuex.Store({
       commit("setDevice",BluetoothBelt);
       commit("setDeviceHistory",BluetoothBelt);
     },
-    disconnect({commit}){
+    disconnect({commit},i){
       console.log("Delete device out off store...");
-      commit("setDevice",[]);
+      commit("deleteDevice",i);
     },
   },
   getters: {

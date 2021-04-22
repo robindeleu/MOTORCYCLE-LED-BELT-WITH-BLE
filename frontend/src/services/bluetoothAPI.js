@@ -58,11 +58,20 @@ export default{
             }
       },
 
-      disconnect(device, store){ // NOT TESTED YET!
+      disconnect(id, store){ // NOT TESTED YET!
             // device.gatt.disconnect();
+            let i = 0;
+            while (i < store.getters.getBluetoothBelt.length){
+                  if(store.getters.getBluetoothBelt[i].id == id){
+                        break;
+                  }
+                  i++;
+            }
+
+            let device = store.getters.getBluetoothBelt[i];
             if(device.gatt.connected){
                   device.gatt.disconnect();
-                  store.dispatch("disconnect");
+                  store.dispatch("disconnect", i);
             }
       }
             
