@@ -25,7 +25,7 @@ export default new Vuex.Store({
     },
     disconnect({commit}){
       console.log("Delete device out off store...");
-      commit("setDevice",{});
+      commit("setDevice",[]);
     },
   },
   getters: {
