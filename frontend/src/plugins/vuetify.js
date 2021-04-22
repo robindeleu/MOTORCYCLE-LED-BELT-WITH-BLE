@@ -17,14 +17,5 @@ export default new Vuetify({
       },
     },
   },
-  pwa: {
-    name: 'LedBelt',
-    themeColor: '#FFC107',
-    msTileColor: '#000000',
-    appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'black',
-    workboxPluginMode: 'InjectManifest',
-    workboxOptions: {
-      swSrc: 'dev/sw.js',
-    }}
+  
 });
