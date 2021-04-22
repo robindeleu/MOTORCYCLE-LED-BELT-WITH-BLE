@@ -4,7 +4,7 @@
       ><v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <div class="d-flex align-center">
-        <h3>Motorcycle LED belt</h3>
+        <router-link class="text-decoration-none white--text" to="/"><h3>Motorcycle LED belt</h3></router-link>
       </div>
 
       <v-spacer></v-spacer>
@@ -68,27 +68,29 @@
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            outlined
-            fab
-            small
-            rounded
-            color="white"
-            v-bind="attrs"
-            v-on="on"
-            class="button"
-          >
-            <v-icon
-              class="mx-2"
-              dark
+          <router-link to="/">
+            <v-btn
               outlined
+              fab
+              small
+              rounded
               color="white"
               v-bind="attrs"
               v-on="on"
+              class="button"
             >
-              mdi-bluetooth-connect
-            </v-icon>
-          </v-btn>
+              <v-icon
+                class="mx-2"
+                dark
+                outlined
+                color="white"
+                v-bind="attrs"
+                v-on="on"
+              >
+                mdi-bluetooth-connect
+              </v-icon>
+            </v-btn>
+            </router-link>
         </template>
         <span>Show current connected belt's</span>
       </v-tooltip>
