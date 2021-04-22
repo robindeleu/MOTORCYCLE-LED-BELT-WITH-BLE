@@ -58,12 +58,7 @@ export default{
             }
       },
 
-<<<<<<< HEAD
-
-      disconnect(id, store){ // NOT TESTED YET!
-=======
       disconnect(id, store){
->>>>>>> 88c3be6142e2dcd4696512626f9f1e5e228605f7
             // device.gatt.disconnect();
             let i = 0;
             while (i < store.getters.getBluetoothBelt.length){
