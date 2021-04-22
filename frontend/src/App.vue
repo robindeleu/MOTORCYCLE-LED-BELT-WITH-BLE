@@ -153,6 +153,14 @@
             />
           </v-col>
         </v-row>
+        <div v-if="storeDevice.length===0">
+        <v-row justify="center" >
+          <v-col cols="9" md="4">
+            <DefaultCard 
+        />
+          </v-col>
+        </v-row>
+        </div>
       </v-container>
     </v-main>
   </v-app>
@@ -160,6 +168,7 @@
 
 <script>
 import BeltCard from "./components/BeltCard.vue";
+import DefaultCard from "./components/DefaultCard.vue";
 import bluetoothAPI from "./services/bluetoothAPI.js";
 
 export default {
@@ -167,6 +176,7 @@ export default {
 
   components: {
     BeltCard,
+    DefaultCard
   },
 
   data: () => ({

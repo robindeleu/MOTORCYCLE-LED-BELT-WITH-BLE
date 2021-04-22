@@ -23,7 +23,7 @@
               color="orange lighten-2"
               v-bind="attrs"
               v-on="on"
-              @click="disconnect()"
+              @click="disconnect(id)"
             >
               Disconnect
             </v-btn>
@@ -293,9 +293,9 @@ export default {
     },
   },
   methods: {
-    disconnect() {
-      console.log("disconnect");
-      bluetoothAPI.disconnect(this.$store.getters.BluetoothBelt, this.$store);
+    disconnect(id) {
+      console.log("disconnect ", id);
+      bluetoothAPI.disconnect(id, this.$store);
     },
   },
 };
