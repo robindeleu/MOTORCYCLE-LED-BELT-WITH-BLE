@@ -197,9 +197,9 @@ export default {
 
   methods: {
     showAllDevices() {
-      // bluetoothAPI.showAllDevices();
+      // bluetoothAPI.showAllDevices(this.$store);
       bluetoothAPI.showFilteredPrefixDevices("LEDBELT", this.$store)
-      // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin")
+      // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin", this.$store)
     },
   },
 };
