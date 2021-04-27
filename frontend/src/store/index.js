@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     BluetoothBelt:[],
-    HistoryBluetoothBelt:[]
+    HistoryBluetoothBelt:[],
+    BluetoothData:[]
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
@@ -18,6 +19,10 @@ export default new Vuex.Store({
     },
     deleteDevice(state, index){
       state.BluetoothBelt.splice(index,1);
+    },
+    setBluetoothData(state, BluetoothData){
+      state.BluetoothData.push(BluetoothData) // adding new objects to BluetoothData array
+      // With this implementation we can save data from all time
     }
   },
   actions: {
@@ -30,6 +35,10 @@ export default new Vuex.Store({
       console.log("Delete device out off store...");
       commit("deleteDevice",i);
     },
+    storeBluetoothData({commit},BluetoothData){
+      console.log("Save data in store...", BluetoothData);
+      commit("setBluetoothData",BluetoothData);
+    },
   },
   getters: {
     getBluetoothBelt(state) {
@@ -37,6 +46,9 @@ export default new Vuex.Store({
     },
     getHistoryBluetoothBelt(state){
       return state.HistoryBluetoothBelt;
+    },
+    getBluetoothData(state){
+      return state.BluetoothData;
     },
   },
   modules: {

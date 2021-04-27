@@ -46,7 +46,9 @@ export default{
                         device.gatt.connect(); // Connect device
                         console.log(device);
                         store.dispatch("connect",device); // Save device to store
-                        console.log(store.getters.getBluetoothBelt);
+                        console.log(store.getters.getBluetoothBelt).then(function(server){
+                              server.getPrimaryService(0xffe5) //Get the service you want, NEED ADJUSTMENTS!!!!
+                        });
                   }).catch(error => {
                         console.log(error);
                   })
