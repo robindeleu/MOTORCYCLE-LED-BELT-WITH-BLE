@@ -7,9 +7,12 @@ export default new Vuex.Store({
   state: {
     BluetoothBelt:[],
     HistoryBluetoothBelt:[{'id': '5', 'name':'Device'},{'id':'3','name':'Device'}],
-    BluetoothTemp:[],
-    BluetoothHum:[],
-    BluetoothBatt:[]
+    // BluetoothTemp:[],
+    // BluetoothHum:[],
+    // BluetoothBatt:[]
+    BluetoothTemp:0,
+    BluetoothHum:0,
+    BluetoothBatt:0
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
@@ -38,13 +41,16 @@ export default new Vuex.Store({
       state.BluetoothBelt.splice(index,1);
     },
     setBluetoothTemp(state, BluetoothTemp){
-      state.BluetoothTemp.push(BluetoothTemp)
+      // state.BluetoothTemp.push(BluetoothTemp)
+      state.BluetoothTemp = BluetoothTemp
     },
     setBluetoothHum(state, BluetoothHum){
-      state.BluetoothHum.push(BluetoothHum)
+      // state.BluetoothHum.push(BluetoothHum)
+      state.BluetoothHum = BluetoothHum
     },
     setBluetoothBatt(state, BluetoothBatt){
-      state.BluetoothBatt.push(BluetoothBatt)
+      // state.BluetoothBatt.push(BluetoothBatt)
+      state.BluetoothBatt = BluetoothBatt
     },
     deleteDeviceHistory(state, index){
       state.HistoryBluetoothBelt.splice(index,1);

@@ -10,8 +10,8 @@
         height="200"
       ></v-parallax>
 
-      <v-card-title> {{name}} </v-card-title>
-      <v-card-subtitle> Belt id {{id}} </v-card-subtitle>
+      <v-card-title> {{ name }} </v-card-title>
+      <v-card-subtitle> Belt id {{ id }} </v-card-subtitle>
 
       <v-card-actions>
         <v-tooltip bottom>
@@ -41,10 +41,36 @@
       <v-expand-transition>
         <div v-show="show">
           <v-container class="text-center">
-            <p>props id: {{id}}</p>
-            <p>props name: {{name}}</p>
+            <p>props id: {{ id }}</p>
+            <p>props name: {{ name }}</p>
+
+            <h3>Temperature</h3>
+            <v-progress-circular
+              :rotate="-90"
+              :size="120"
+              :width="20"
+              :value="storeTemp * 3"
+              color="primary"
+            >
+              {{ storeTemp }} °C
+            </v-progress-circular>
+
+            <h3>Humidity</h3>
+            <v-progress-circular
+              :rotate="-90"
+              :size="120"
+              :width="20"
+              :value="storeHum"
+              color="light-blue darken-2"
+            >
+              {{ storeHum }} %
+            </v-progress-circular>
+
             <h3>Battery level</h3>
-            <v-sparkline
+            <v-progress-linear v-model="storeBatt" height="25">
+              <strong>{{ Math.ceil(storeBatt) }}%</strong>
+            </v-progress-linear>
+            <!-- <v-sparkline
               :value="value"
               :gradient="gradient"
               :smooth="radius || false"
@@ -56,7 +82,7 @@
               :type="type"
               :auto-line-width="autoLineWidth"
               auto-draw
-            ></v-sparkline>
+            ></v-sparkline> -->
           </v-container>
 
           <v-container class="text-center">
@@ -152,13 +178,13 @@ import bluetoothAPI from "../services/bluetoothAPI.js";
 export default {
   name: "BeltCard",
   props: {
-      id: {
-        type: String
-      },
-      name:{
-        type: String
-      }
+    id: {
+      type: String,
     },
+    name: {
+      type: String,
+    },
+  },
   components: {},
 
   data: () => ({
@@ -290,6 +316,15 @@ export default {
   computed: {
     storeDevice() {
       return this.$store.getters.getBluetoothBelt;
+    },
+    storeTemp() {
+      return this.$store.getters.getBluetoothTemp;
+    },
+    storeHum() {
+      return this.$store.getters.getBluetoothHum;
+    },
+    storeBatt() {
+      return this.$store.getters.getBluetoothBatt;
     },
   },
   methods: {
