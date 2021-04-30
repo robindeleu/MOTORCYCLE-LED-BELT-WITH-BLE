@@ -10,7 +10,7 @@
                 </v-col>
             </v-row>
             <div v-if="storeDevice.length===0">
-                <h1>NO DEVICES FOUND</h1> <!--TO CHANGE!-->
+                <DefaultHistoryCard/>
             </div>
         </v-container>
     </div>
@@ -19,12 +19,14 @@
 <script>
 
 import HistoryCard from "../components/HistoryCard.vue"
+import DefaultHistoryCard from "../components/DefaultHistoryCard.vue"
 
 export default {
     name: 'History',
 
     components: {
         HistoryCard,
+        DefaultHistoryCard,
     },
 
     computed: {
