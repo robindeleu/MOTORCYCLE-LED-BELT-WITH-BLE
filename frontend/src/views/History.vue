@@ -2,15 +2,15 @@
     <div>
         <v-container>
             <v-row justify="center">
-                <v-col cols="9" md="4" v-for="test in storeDevice" :key="test.id">
+                <v-col cols="9" md="4" v-for="device in storeDevice" :key="device.id">
                     <HistoryCard
-                        :id="test.id"
-                        :name="test.name"
+                        :id="device.id"
+                        :name="device.name"
                     />
                 </v-col>
             </v-row>
             <div v-if="storeDevice.length===0">
-                <h1>NO DEVICES FOUND</h1>
+                <h1>NO DEVICES FOUND</h1> <!--TO CHANGE!-->
             </div>
         </v-container>
     </div>

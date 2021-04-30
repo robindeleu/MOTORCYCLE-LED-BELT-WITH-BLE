@@ -152,53 +152,21 @@
         </v-list>
       </v-navigation-drawer>
       <router-view/>  
-      <!--<v-container>
-        <v-row justify="center">
-          <v-col cols="9" md="4"
-          v-for="test in storeDevice" :key="test.id">
-          <v-col cols="9" md="4">
-            <belt-card 
-              :id="test.id"
-              :name="test.name"
-            />
-          </v-col>
-        </v-row>
-        <div v-if="storeDevice.length===0">
-        <v-row justify="center" >
-          <v-col cols="9" md="4">
-            <DefaultCard 
-        />
-          </v-col>
-        </v-row>
-        </div>
-      </v-container>-->
     </v-main>
   </v-app>
 </template>
 
 <script>
-//import BeltCard from "./components/BeltCard.vue";
-//import DefaultCard from "./components/DefaultCard.vue";
 import bluetoothAPI from "./services/bluetoothAPI.js";
 
 export default {
   name: "App",
-
-  // components: {
-  //   BeltCard,
-  //   DefaultCard
-  // },
 
   data: () => ({
     drawer: false,
     group: null,
     show: false,
   }),
-  // computed: {
-  //   storeDevice() {
-  //     return this.$store.getters.getBluetoothBelt;
-  //   },
-  // },
   watch: {
     group() {
       this.drawer = false;

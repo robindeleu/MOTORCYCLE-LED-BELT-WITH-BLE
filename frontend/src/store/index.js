@@ -11,18 +11,18 @@ export default new Vuex.Store({
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
-
+      // CHECK IF DEVICE IS ALREADY IN BluetoothBelt
       state.BluetoothBelt.push(BluetoothBelt) //adding object to array!
     },
     setDeviceHistory(state, BluetoothBelt) {
-      state.HistoryBluetoothBelt = Object.assign(state.HistoryBluetoothBelt, BluetoothBelt)
+      // CHECK IF DEVICE IS ALREADY IN HistoryBelt
+      state.HistoryBluetoothBelt.push(BluetoothBelt)
     },
     deleteDevice(state, index){
       state.BluetoothBelt.splice(index,1);
     },
-    setBluetoothData(state, BluetoothData){
-      state.BluetoothData.push(BluetoothData) // adding new objects to BluetoothData array
-      // With this implementation we can save data from all time
+    deleteDeviceHistory(state, index){
+      state.HistoryBluetoothBelt.splice(index,1);
     }
   },
   actions: {
@@ -31,14 +31,21 @@ export default new Vuex.Store({
       commit("setDevice",BluetoothBelt);
       commit("setDeviceHistory",BluetoothBelt);
     },
-    disconnect({commit},i){
-      console.log("Delete device out off store...");
-      commit("deleteDevice",i);
+    disconnect({commit},index){
+      console.log("Delete device out of the store...");
+      commit("deleteDevice",index);
     },
+<<<<<<< HEAD
     storeBluetoothData({commit},BluetoothData){
       console.log("Save data in store...", BluetoothData);
       commit("setBluetoothData",BluetoothData);
     },
+=======
+    deleteHistoryDevice({commit},index){
+      console.log("Delete device out of history");
+      commit("deleteDeviceHistory",index);
+    }
+>>>>>>> 6a81f8a37f4ff1afbd12a5a9b216c5eb2566c865
   },
   getters: {
     getBluetoothBelt(state) {
