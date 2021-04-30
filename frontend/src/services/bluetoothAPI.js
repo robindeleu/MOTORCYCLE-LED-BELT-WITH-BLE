@@ -46,9 +46,10 @@ export default{
                         device.gatt.connect().then(server => {
                               server.getPrimaryService(0x181A).then(service => {
                                     service.getCharacteristic(0x2A6E)
-                                    console.log("getCharacteristic",service.getCharacteristic(0x2A6E) )
+                                    console.log("getCharacteristic",service)
+                                    store.dispatch("storeBluetoothData",service);
                               }) //Get the service you want, NEED ADJUSTMENTS!!!!
-                              console.log("PrimaryService",server.getPrimaryService(0x181A))
+                              console.log("PrimaryService",server)
                               store.dispatch("storeBluetoothData",server); // Store service data in Store (BluetoothData)
                         }); // Connect device
                         store.dispatch("connect",device); // Save device to store

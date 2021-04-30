@@ -39,7 +39,7 @@ export default new Vuex.Store({
       commit("deleteDevice",index);
     },
     storeBluetoothData({commit},BluetoothData){
-      console.log("Save device in store...", BluetoothData);
+      console.log("Save DATA in store...", BluetoothData);
       commit("setBluetoothData",BluetoothData);
     },
     deleteHistoryDevice({commit},index){
