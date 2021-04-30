@@ -45,13 +45,11 @@ export default{
                   navigator.bluetooth.requestDevice(options).then(device => {
                         device.gatt.connect().then(server => {
                               server.getPrimaryService(0x181A).then(service => {
-                                    service.getCharacteristic(0x2A6E).then( a =>{
-                                          a.readValue().then(b =>{
-                                                console.log(b)
+                                    service.getCharacteristic(0x2A6E).then( characteristicdata =>{
+                                          characteristicdata.readValue().then(data =>{
+                                                console.log(data)
                                           })
-                                    }
-
-                                    )
+                                    })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
                                     store.dispatch("storeBluetoothData",service);
                               }) //Get the service you want, NEED ADJUSTMENTS!!!!
