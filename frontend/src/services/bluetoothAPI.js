@@ -47,8 +47,10 @@ export default{
                               server.getPrimaryService(0x181A).then(service => {
                                     service.getCharacteristic(0x2A6E).then( characteristicdata =>{
                                           characteristicdata.readValue().then(data =>{
-                                                // let info = data.buffer
-                                                console.log("Temp:", data.buffer)
+                                                const values = new Int16Array(data.buffer);
+                                                let temp = (values[0]/100)
+                                                temp = (temp + 9).toFixed(2) // Correction factor of 18 compared to DHT11
+                                                console.log("Temp: ",temp, "°C")
                                           })
                                     })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
@@ -56,8 +58,16 @@ export default{
 
                                     service.getCharacteristic(0x2A6F).then( characteristicdata =>{
                                           characteristicdata.readValue().then(data =>{
-                                                
-                                                console.log("hum:", data)
+                                                const values = new Int16Array(data.buffer);
+                                                let hum = (values[0] + 18).toFixed(2) // Correction factor of 18 compared to DHT11
+                                                console.log("hum:", hum, "%")
+                                          })
+                                    })
+
+                                    service.getCharacteristic(0x2A19).then( characteristicdata =>{
+                                          characteristicdata.readValue().then(data =>{
+                                                const values = new Int8Array(data.buffer);
+                                                console.log("Batterylevel:", values[0], "%")
                                           })
                                     })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
