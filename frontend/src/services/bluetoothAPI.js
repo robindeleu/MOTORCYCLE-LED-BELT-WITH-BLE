@@ -42,9 +42,7 @@ export default{
 
                   navigator.bluetooth.requestDevice(options).then(device => {
                         console.log('Name: ' + device.name);
-                        console.log(device);
                         device.gatt.connect(); // Connect device
-                        console.log(device);
                         store.dispatch("connect",device); // Save device to store
                         console.log(store.getters.getBluetoothBelt).then(server => {
                               server.getPrimaryService(0xffe5) //Get the service you want, NEED ADJUSTMENTS!!!!
