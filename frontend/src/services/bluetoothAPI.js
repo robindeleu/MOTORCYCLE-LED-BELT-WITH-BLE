@@ -47,25 +47,25 @@ export default{
                               server.getPrimaryService(0x181A).then(service => {
                                     service.getCharacteristic(0x2A6E).then( characteristicdata =>{
                                           characteristicdata.readValue().then(data =>{
-                                                let temp = new Uint8Array(data)
-                                                console.log("Temp:", temp)
+                                                // let info = data.buffer
+                                                console.log("Temp:", data.buffer)
                                           })
                                     })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
-                                    store.dispatch("storeBluetoothData",service);
+                                    store.dispatch("storeBluetoothTemp",service);
 
                                     service.getCharacteristic(0x2A6F).then( characteristicdata =>{
                                           characteristicdata.readValue().then(data =>{
-                                                console.log("Hum",data)
+                                                
+                                                console.log("hum:", data)
                                           })
                                     })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
-                                    store.dispatch("storeBluetoothData",service);
+                                    store.dispatch("storeBluetoothHum",service);
 
                                     
                               })
-                              console.log("PrimaryService",server)
-                              store.dispatch("storeBluetoothData",server); // Store service data in Store (BluetoothData)
+                              console.log("PrimaryService",server) // Store service data in Store (BluetoothData)
                         }); // Connect device
                         store.dispatch("connect",device); // Save device to store
                   }).catch(error => {
