@@ -7,7 +7,7 @@
       ></v-parallax>
 
       <v-card-title>No device connected</v-card-title>
-      <v-card-subtitle> Pleas pair to a new device </v-card-subtitle>
+      <v-card-subtitle> Please pair to a new device </v-card-subtitle>
 
       <v-card-actions>
         <v-tooltip bottom>
