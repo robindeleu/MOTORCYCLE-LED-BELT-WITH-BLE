@@ -41,8 +41,8 @@
       <v-expand-transition>
         <div v-show="show">
           <v-container class="text-center">
-            <p>props id: {{ id }}</p>
-            <p>props name: {{ name }}</p>
+            <!-- <p>props id: {{ id }}</p>
+            <p>props name: {{ name }}</p> -->
 
             <h3>Temperature</h3>
             <v-progress-circular
