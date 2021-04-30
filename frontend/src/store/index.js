@@ -7,7 +7,9 @@ export default new Vuex.Store({
   state: {
     BluetoothBelt:[],
     HistoryBluetoothBelt:[{'id': '5', 'name':'Device'},{'id':'3','name':'Device'}],
-    BluetoothData:[]
+    BluetoothTemp:[],
+    BluetoothHum:[],
+    BluetoothBatt:[]
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
@@ -35,8 +37,14 @@ export default new Vuex.Store({
     deleteDevice(state, index){
       state.BluetoothBelt.splice(index,1);
     },
-    setBluetoothData(state, BluetoothData){
-      state.BluetoothData.push(BluetoothData)
+    setBluetoothTemp(state, BluetoothTemp){
+      state.BluetoothTemp.push(BluetoothTemp)
+    },
+    setBluetoothHum(state, BluetoothHum){
+      state.BluetoothHum.push(BluetoothHum)
+    },
+    setBluetoothBatt(state, BluetoothBatt){
+      state.BluetoothBatt.push(BluetoothBatt)
     },
     deleteDeviceHistory(state, index){
       state.HistoryBluetoothBelt.splice(index,1);
@@ -52,9 +60,17 @@ export default new Vuex.Store({
       console.log("Delete device out of the store...");
       commit("deleteDevice",index);
     },
-    storeBluetoothData({commit},BluetoothData){
-      console.log("Save DATA in store...", BluetoothData);
-      commit("setBluetoothData",BluetoothData);
+    storeBluetoothTemp({commit},BluetoothTemp){
+      console.log("Save BluetoothTemp in store...", BluetoothTemp);
+      commit("setBluetoothTemp",BluetoothTemp);
+    },
+    storeBluetoothHum({commit},BluetoothHum){
+      console.log("Save BluetoothHum in store...", BluetoothHum);
+      commit("setBluetoothHum",BluetoothHum);
+    },
+    storeBluetoothBatt({commit},BluetoothBatt){
+      console.log("Save BluetoothBatt in store...", BluetoothBatt);
+      commit("setBluetoothBatt",BluetoothBatt);
     },
     deleteHistoryDevice({commit},index){
       console.log("Delete device out of history");
@@ -68,8 +84,14 @@ export default new Vuex.Store({
     getHistoryBluetoothBelt(state){
       return state.HistoryBluetoothBelt;
     },
-    getBluetoothData(state){
-      return state.BluetoothData;
+    getBluetoothTemp(state){
+      return state.BluetoothTemp;
+    },
+    getBluetoothHum(state){
+      return state.BluetoothHum;
+    },
+    getBluetoothBatt(state){
+      return state.BluetoothBatt;
     },
   },
   modules: {

@@ -47,8 +47,8 @@ export default{
                               server.getPrimaryService(0x181A).then(service => {
                                     service.getCharacteristic(0x2A6E).then( characteristicdata =>{
                                           characteristicdata.readValue().then(data =>{
-                                                let temp = new Uint8Array(data)
-                                                console.log("Temp:", temp)
+                                                
+                                                console.log("Temp:", data.getInt16(0))
                                           })
                                     })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
@@ -56,7 +56,8 @@ export default{
 
                                     service.getCharacteristic(0x2A6F).then( characteristicdata =>{
                                           characteristicdata.readValue().then(data =>{
-                                                console.log("Hum",data)
+                                                
+                                                console.log("hum:", data)
                                           })
                                     })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
