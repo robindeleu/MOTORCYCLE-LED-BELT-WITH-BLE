@@ -35,17 +35,10 @@ export default new Vuex.Store({
       console.log("Delete device out of the store...");
       commit("deleteDevice",index);
     },
-<<<<<<< HEAD
-    storeBluetoothData({commit},BluetoothData){
-      console.log("Save data in store...", BluetoothData);
-      commit("setBluetoothData",BluetoothData);
-    },
-=======
     deleteHistoryDevice({commit},index){
       console.log("Delete device out of history");
       commit("deleteDeviceHistory",index);
     }
->>>>>>> 6a81f8a37f4ff1afbd12a5a9b216c5eb2566c865
   },
   getters: {
     getBluetoothBelt(state) {
