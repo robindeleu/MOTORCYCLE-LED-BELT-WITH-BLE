@@ -21,6 +21,9 @@ export default new Vuex.Store({
     deleteDevice(state, index){
       state.BluetoothBelt.splice(index,1);
     },
+    setBluetoothData(state, BluetoothData){
+      state.BluetoothData.push(BluetoothData)
+    },
     deleteDeviceHistory(state, index){
       state.HistoryBluetoothBelt.splice(index,1);
     }
@@ -34,6 +37,10 @@ export default new Vuex.Store({
     disconnect({commit},index){
       console.log("Delete device out of the store...");
       commit("deleteDevice",index);
+    },
+    storeBluetoothData({commit},BluetoothData){
+      console.log("Save device in store...", BluetoothData);
+      commit("setBluetoothData",BluetoothData);
     },
     deleteHistoryDevice({commit},index){
       console.log("Delete device out of history");

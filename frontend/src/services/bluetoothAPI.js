@@ -18,7 +18,8 @@ export default{
     
             let options = {
                   filters:[
-                        {name: name}
+                        {name: name},
+                        {services: [0x1800, 0x1801, 0x180F, 0x181A]}
                   ]
             };
 
@@ -29,7 +30,8 @@ export default{
 
             let options = {
                   filters:[
-                        {namePrefix: nameprefix}
+                        {namePrefix: nameprefix},
+                        {services: [0x1800, 0x1801, 0x180F, 0x181A]}
                   ]       
             }
 
@@ -41,15 +43,15 @@ export default{
                   console.log("Searching devices");
 
                   navigator.bluetooth.requestDevice(options).then(device => {
-                        console.log('Name: ' + device.name);
-                        console.log(device);
-                        device.gatt.connect(); // Connect device
-                        console.log(device);
-                        store.dispatch("connect",device); // Save device to store
-                        console.log(store.getters.getBluetoothBelt).then(server => {
-                              server.getPrimaryService(0xffe5) //Get the service you want, NEED ADJUSTMENTS!!!!
+                        device.gatt.connect().then(server => {
+                              server.getPrimaryService(0x181A).then(service => {
+                                    service.getCharacteristic(0x2A6E)
+                                    console.log("getCharacteristic",service.getCharacteristic(0x2A6E) )
+                              }) //Get the service you want, NEED ADJUSTMENTS!!!!
+                              console.log("PrimaryService",server.getPrimaryService(0x181A))
                               store.dispatch("storeBluetoothData",server); // Store service data in Store (BluetoothData)
-                        });
+                        }); // Connect device
+                        store.dispatch("connect",device); // Save device to store
                   }).catch(error => {
                         console.log(error);
                   })
