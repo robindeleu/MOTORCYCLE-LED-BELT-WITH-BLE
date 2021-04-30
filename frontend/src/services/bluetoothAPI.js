@@ -47,12 +47,23 @@ export default{
                               server.getPrimaryService(0x181A).then(service => {
                                     service.getCharacteristic(0x2A6E).then( characteristicdata =>{
                                           characteristicdata.readValue().then(data =>{
-                                                console.log(data)
+                                                let temp = new Uint8Array(data)
+                                                console.log("Temp:", temp)
                                           })
                                     })
                                     console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
                                     store.dispatch("storeBluetoothData",service);
-                              }) //Get the service you want, NEED ADJUSTMENTS!!!!
+
+                                    service.getCharacteristic(0x2A6F).then( characteristicdata =>{
+                                          characteristicdata.readValue().then(data =>{
+                                                console.log("Hum",data)
+                                          })
+                                    })
+                                    console.log("getCharacteristic",service.getCharacteristic(0x2A6E))
+                                    store.dispatch("storeBluetoothData",service);
+
+                                    
+                              })
                               console.log("PrimaryService",server)
                               store.dispatch("storeBluetoothData",server); // Store service data in Store (BluetoothData)
                         }); // Connect device
