@@ -13,6 +13,7 @@ export default new Vuex.Store({
     BluetoothTemp:0,
     BluetoothHum:0,
     BluetoothBatt:0,
+    registeredusers:[],
     user:{}
   },
   mutations: {
@@ -59,6 +60,10 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
+    setRegisteredusers(state, registeredusers) {
+      // CHECK IF DEVICE IS ALREADY IN BluetoothBelt
+      state.registeredusers.push(registeredusers) //adding object to array!
+    },
   },
   actions: {
     connect({commit},BluetoothBelt){
@@ -95,7 +100,11 @@ export default new Vuex.Store({
       console.log(`Clearing user ...`);
       commit("setUser", {});
       console.log(`User in Store after : logout`);
-    }
+    },
+    storeregisteredusers({commit},registeredusers){
+      console.log("Save registeredusers in store...", registeredusers);
+      commit("setRegisteredusers",registeredusers);
+    },
   },
   getters: {
     getBluetoothBelt(state) {
@@ -115,6 +124,9 @@ export default new Vuex.Store({
     },
     getUser(state) {
       return state.user;
+    },
+    getRegisteredusers(state) {
+      return state.registeredusers;
     },
   },
   modules: {

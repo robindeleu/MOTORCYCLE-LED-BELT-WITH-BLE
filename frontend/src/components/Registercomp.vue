@@ -86,7 +86,7 @@ export default {
     async register() {
       console.log("Trying to register user ...");
       console.log(this.userobject)
-      this.$store.dispatch("login", this.userobject);
+      this.$store.dispatch("storeregisteredusers", this.userobject);
       try {
         this.$router.push("/loginpage");
       } catch (error) {
