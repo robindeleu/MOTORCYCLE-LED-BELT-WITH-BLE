@@ -4,7 +4,9 @@
       ><v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <div class="d-flex align-center">
-        <router-link class="text-decoration-none white--text" to="/"><h3>Motorcycle LED belt</h3></router-link>
+        <router-link class="text-decoration-none white--text" to="/"
+          ><h3>Motorcycle LED belt</h3></router-link
+        >
       </div>
 
       <v-spacer></v-spacer>
@@ -36,7 +38,7 @@
         </template>
         <span>Add belt</span>
       </v-tooltip>
-   
+
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <router-link to="/history">
@@ -90,7 +92,7 @@
                 mdi-bluetooth-connect
               </v-icon>
             </v-btn>
-            </router-link>
+          </router-link>
         </template>
         <span>Show current connected belt's</span>
       </v-tooltip>
@@ -99,27 +101,32 @@
       <v-navigation-drawer v-model="drawer" absolute bottom temporary>
         <v-list nav dense>
           <v-list-item-group v-model="group" active-class="secondary">
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="secondary">mdi-account-check-outline</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Register</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="secondary"
-                  >mdi-account-arrow-right-outline</v-icon
-                >
-              </v-list-item-icon>
-              <v-list-item-title>Login</v-list-item-title>
-            </v-list-item>
+            <router-link to="/registerpage">
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon color="secondary">mdi-account-check-outline</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Register</v-list-item-title>
+              </v-list-item>
+            </router-link>
+            <router-link to="/loginpage">
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon color="secondary"
+                    >mdi-account-arrow-right-outline</v-icon
+                  >
+                </v-list-item-icon>
+                <v-list-item-title>Login</v-list-item-title>
+              </v-list-item>
+            </router-link>
 
             <v-list-item>
               <v-list-item-icon>
                 <v-icon color="secondary">mdi-bluetooth-audio</v-icon>
               </v-list-item-icon>
-              <v-list-item-title @click="showAllDevices()">Add Belt</v-list-item-title>
+              <v-list-item-title @click="showAllDevices()"
+                >Add Belt</v-list-item-title
+              >
             </v-list-item>
 
             <router-link class="text-decoration-none" to="/history">
@@ -151,7 +158,7 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-      <router-view/>  
+      <router-view />
     </v-main>
   </v-app>
 </template>
@@ -176,7 +183,7 @@ export default {
   methods: {
     showAllDevices() {
       // bluetoothAPI.showAllDevices(this.$store);
-      bluetoothAPI.showFilteredPrefixDevices("LEDBELT", this.$store)
+      bluetoothAPI.showFilteredPrefixDevices("LEDBELT", this.$store);
       // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin", this.$store)
     },
   },
