@@ -11,28 +11,28 @@
         <div class="text-center ma-3">
           <v-text-field
             prepend-icon="mdi-account"
-            v-model="firstname"
+            v-model="userobject.firstname"
             label="First name"
             :rules="nameRules"
             required
           ></v-text-field>
           <v-text-field
             prepend-icon="mdi-account"
-            v-model="lastname"
+            v-model="userobject.lastname"
             label="Last name"
             :rules="nameRules"
             required
           ></v-text-field>
           <v-text-field
             prepend-icon="mdi-email"
-            v-model="email"
+            v-model="userobject.email"
             label="Email"
             :rules="emailRules"
             required
           ></v-text-field>
           <v-text-field
             prepend-icon="mdi-wrench"
-            v-model="password"
+            v-model="userobject.password"
             label="Password"
             :rules="passwordRules"
             required
@@ -67,10 +67,7 @@ export default {
     return {
       valid: false,
       show: false,
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
+      userobject:{firstname:"",lastname:"",email:"",password:""},
       nameRules: [
         (v) => !!v || "Name is required",
         (v) => v.length <= 10 || "Name must be less than 10 characters",
@@ -88,6 +85,8 @@ export default {
   methods: {
     async register() {
       console.log("Trying to register user ...");
+      console.log(this.userobject)
+      this.$store.dispatch("login", this.userobject);
       try {
         this.$router.push("/loginpage");
       } catch (error) {

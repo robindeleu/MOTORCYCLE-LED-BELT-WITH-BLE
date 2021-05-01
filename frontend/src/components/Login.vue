@@ -9,7 +9,7 @@
           <v-text-field
             prepend-icon="mdi-email"
             single-line
-            v-model="email"
+            v-model="userobject.email"
             label="Email"
             :rules="emailRules"
             required
@@ -17,7 +17,7 @@
           <v-text-field
             prepend-icon="mdi-wrench"
             single-line
-            v-model="password"
+            v-model="userobject.password"
             label="Password"
             :rules="passwordRules"
             required
@@ -46,8 +46,7 @@ export default {
     return {
       valid: false,
       show: false,
-      email: "",
-      password: "",
+      userobject:{email:"",password:""},
       emailRules: [
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+/.test(v) || "E-mail must be valid",
@@ -61,6 +60,8 @@ export default {
   methods: {
     async login() {
       console.log("...Trying to login ....");
+      console.log(this.userobject)
+      this.$store.dispatch("login", this.userobject);
       try {
         this.$router.push("/");
       } catch (error) {

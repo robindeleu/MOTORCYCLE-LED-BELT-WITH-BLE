@@ -12,7 +12,8 @@ export default new Vuex.Store({
     // BluetoothBatt:[]
     BluetoothTemp:0,
     BluetoothHum:0,
-    BluetoothBatt:0
+    BluetoothBatt:0,
+    user:{}
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
@@ -54,7 +55,10 @@ export default new Vuex.Store({
     },
     deleteDeviceHistory(state, index){
       state.HistoryBluetoothBelt.splice(index,1);
-    }
+    },
+    setUser(state, user) {
+      state.user = user;
+    },
   },
   actions: {
     connect({commit},BluetoothBelt){
@@ -81,6 +85,16 @@ export default new Vuex.Store({
     deleteHistoryDevice({commit},index){
       console.log("Delete device out of history");
       commit("deleteDeviceHistory",index);
+    },
+    login({ commit }, user) {
+      console.log(`Storing user ...`);
+      console.log(`User in Store during login` , user);
+      commit("setUser", user);
+    },
+    logout({ commit }) {
+      console.log(`Clearing user ...`);
+      commit("setUser", {});
+      console.log(`User in Store after : logout`);
     }
   },
   getters: {
@@ -98,6 +112,9 @@ export default new Vuex.Store({
     },
     getBluetoothBatt(state){
       return state.BluetoothBatt;
+    },
+    getUser(state) {
+      return state.user;
     },
   },
   modules: {
