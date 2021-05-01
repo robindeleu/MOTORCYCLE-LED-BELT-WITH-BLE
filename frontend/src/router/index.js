@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import DeviceHistory from '../views/History.vue'
 import Loginpage from '../views/Loginpage.vue'
 import Registerpage from '../views/Register.vue'
+import Store from "@/store/index.js";
 
 Vue.use(VueRouter)
 
@@ -11,12 +12,26 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    beforeEnter: (to, from, next) => {
+      if (!Store.getters.getUser.email) {
+        console.log("Unauthorized");
+        next("/loginpage");
+      }
+      next();
+    }
   },
   {
     path: '/history',
     name: 'History',
-    component: DeviceHistory
+    component: DeviceHistory,
+    beforeEnter: (to, from, next) => {
+      if (!Store.getters.getUser.email) {
+        console.log("Unauthorized");
+        next("/loginpage");
+      }
+      next();
+    }
   },
   {
     path: '/loginpage',
