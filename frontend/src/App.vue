@@ -153,7 +153,7 @@
                   >mdi-account-arrow-left-outline</v-icon
                 >
               </v-list-item-icon>
-              <v-list-item-title>Logout</v-list-item-title>
+              <v-list-item-title @click="logout()">Logout</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
         </v-list>
@@ -186,6 +186,11 @@ export default {
       bluetoothAPI.showFilteredPrefixDevices("LEDBELT", this.$store);
       // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin", this.$store)
     },
+    logout(){
+      console.log("***Logout user***")
+      this.$store.dispatch("logout");
+      this.$router.push('/loginpage')
+    }
   },
 };
 </script>
