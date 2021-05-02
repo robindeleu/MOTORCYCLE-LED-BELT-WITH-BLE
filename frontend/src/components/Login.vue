@@ -46,7 +46,10 @@ export default {
     return {
       valid: false,
       show: false,
-      userobject:{email:"",password:""},
+      registerdata: [],
+      registerlength: 0,
+      i: 0,
+      userobject: { email: "", password: "" },
       emailRules: [
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+/.test(v) || "E-mail must be valid",
@@ -60,14 +63,35 @@ export default {
   methods: {
     async login() {
       console.log("...Trying to login ....");
-      console.log(this.userobject)
-      this.$store.dispatch("login", this.userobject);
+      console.log(this.userobject);
+      this.registerdata = this.$store.getters.getRegisteredusers;
+      this.registerlength = this.registerdata.length;
+      // console.log("registerdata: ", this.registerdata);
+      console.log("length: ", this.registerlength);
+      // console.log(this.$store.getters.getRegisteredusers);
+      for (this.i = 0; this.i < this.registerlength; this.i++){
+        console.log("registerdata email: ",this.registerdata[this.i].email)
+        console.log("userobject email: ",this.userobject.email)
+        if(this.registerdata[this.i].email === this.userobject.email && this.registerdata[this.i].password === this.userobject.password){
+          console.log("email gelijk aan elkaar, PASSWOORD gelijk aan elkaar")
+          this.$store.dispatch("login", this.userobject);
+        }else{
+          console.log("email or password is wrong")
+        }
+      }
+
+      // this.$store.dispatch("login", this.userobject);
       try {
         this.$router.push("/");
       } catch (error) {
         console.log("Login failed");
         console.log(error);
       }
+    },
+  },
+  computed: {
+    registerArray() {
+      return this.$store.getters.getRegisteredusers;
     },
   },
 };
