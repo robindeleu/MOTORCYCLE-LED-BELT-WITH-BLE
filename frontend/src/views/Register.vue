@@ -1,10 +1,12 @@
 <template>
   <div class="register">
-    <v-row justify="center">
-      <v-col cols="9" md="4">
-        <Registercomp />
-      </v-col>
-    </v-row>
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="9" md="4">
+          <Registercomp />
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 

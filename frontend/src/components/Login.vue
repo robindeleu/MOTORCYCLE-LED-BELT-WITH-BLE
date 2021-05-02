@@ -1,5 +1,5 @@
 <template>
-  <v-card class="rounded-t-xl">
+  <v-card class="rounded-xl">
     <v-parallax
       src="https://images.unsplash.com/photo-1588095362214-a9af5ce6a165?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80"
       height="300"
@@ -45,12 +45,7 @@
       {{ text }}
 
       <template v-slot:action="{ attrs }">
-        <v-btn
-          color="white"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
+        <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
           Close
         </v-btn>
       </template>
@@ -65,7 +60,7 @@ export default {
   data: function () {
     return {
       snackbar: false,
-      text: '',
+      text: "",
       timeout: 10000,
       valid: false,
       show: false,
@@ -90,18 +85,23 @@ export default {
       this.registerdata = this.$store.getters.getRegisteredusers;
       this.registerlength = this.registerdata.length;
 
-      for (this.i = 0; this.i < this.registerlength; this.i++){
-        if(this.registerdata[this.i].email === this.userobject.email && this.registerdata[this.i].password === this.userobject.password){
-          console.log("email gelijk aan elkaar, PASSWOORD gelijk aan elkaar")
+      for (this.i = 0; this.i < this.registerlength; this.i++) {
+        if (
+          this.registerdata[this.i].email === this.userobject.email &&
+          this.registerdata[this.i].password === this.userobject.password
+        ) {
+          console.log("email gelijk aan elkaar, PASSWOORD gelijk aan elkaar");
           this.$store.dispatch("login", this.userobject);
-        }else if(this.registerdata[this.i].email === this.userobject.email){
-          console.log("password is wrong")
-          this.text = 'Please check password'
-          this.snackbar = true
-        }else if(this.registerdata[this.i].password === this.userobject.password){
-          console.log("Email is wrong")
-          this.text = 'Please check email'
-          this.snackbar = true
+        } else if (this.registerdata[this.i].email === this.userobject.email) {
+          console.log("password is wrong");
+          this.text = "Please check password";
+          this.snackbar = true;
+        } else if (
+          this.registerdata[this.i].password === this.userobject.password
+        ) {
+          console.log("Email is wrong");
+          this.text = "Please check email";
+          this.snackbar = true;
         }
       }
       try {

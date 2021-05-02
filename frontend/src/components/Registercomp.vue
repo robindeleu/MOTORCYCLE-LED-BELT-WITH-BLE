@@ -67,7 +67,7 @@ export default {
     return {
       valid: false,
       show: false,
-      userobject:{firstname:"",lastname:"",email:"",password:""},
+      userobject: { firstname: "", lastname: "", email: "", password: "" },
       nameRules: [
         (v) => !!v || "Name is required",
         (v) => v.length <= 10 || "Name must be less than 10 characters",
@@ -85,7 +85,7 @@ export default {
   methods: {
     async register() {
       console.log("Trying to register user ...");
-      console.log(this.userobject)
+      console.log(this.userobject);
       this.$store.dispatch("storeregisteredusers", this.userobject);
       this.$store.dispatch("login", this.userobject);
       try {
