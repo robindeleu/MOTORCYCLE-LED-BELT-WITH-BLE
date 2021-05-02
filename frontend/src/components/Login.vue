@@ -35,6 +35,26 @@
         </div>
       </v-overlay>
     </v-parallax>
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+      rounded="pill"
+      bottom
+      color="red"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -44,6 +64,9 @@ export default {
   components: {},
   data: function () {
     return {
+      snackbar: false,
+      text: '',
+      timeout: 10000,
       valid: false,
       show: false,
       registerdata: [],
@@ -66,21 +89,21 @@ export default {
       console.log(this.userobject);
       this.registerdata = this.$store.getters.getRegisteredusers;
       this.registerlength = this.registerdata.length;
-      // console.log("registerdata: ", this.registerdata);
-      console.log("length: ", this.registerlength);
-      // console.log(this.$store.getters.getRegisteredusers);
+
       for (this.i = 0; this.i < this.registerlength; this.i++){
-        console.log("registerdata email: ",this.registerdata[this.i].email)
-        console.log("userobject email: ",this.userobject.email)
         if(this.registerdata[this.i].email === this.userobject.email && this.registerdata[this.i].password === this.userobject.password){
           console.log("email gelijk aan elkaar, PASSWOORD gelijk aan elkaar")
           this.$store.dispatch("login", this.userobject);
-        }else{
-          console.log("email or password is wrong")
+        }else if(this.registerdata[this.i].email === this.userobject.email){
+          console.log("password is wrong")
+          this.text = 'Please check password'
+          this.snackbar = true
+        }else if(this.registerdata[this.i].password === this.userobject.password){
+          console.log("Email is wrong")
+          this.text = 'Please check email'
+          this.snackbar = true
         }
       }
-
-      // this.$store.dispatch("login", this.userobject);
       try {
         this.$router.push("/");
       } catch (error) {
