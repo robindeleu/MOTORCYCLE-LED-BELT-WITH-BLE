@@ -87,8 +87,9 @@ export default {
       console.log("Trying to register user ...");
       console.log(this.userobject)
       this.$store.dispatch("storeregisteredusers", this.userobject);
+      this.$store.dispatch("login", this.userobject);
       try {
-        this.$router.push("/loginpage");
+        this.$router.push("/");
       } catch (error) {
         console.log("Register failed");
         console.log(error);

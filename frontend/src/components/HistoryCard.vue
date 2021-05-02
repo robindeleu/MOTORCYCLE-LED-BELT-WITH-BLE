@@ -1,14 +1,13 @@
 <template>
   <v-container>
     <v-card class="mx-auto" max-width="300">
-
       <v-parallax
         src="https://media.istockphoto.com/photos/watercolor-textured-background-picture-id887755698?k=6&m=887755698&s=612x612&w=0&h=_yEUF8gLpWjZv5IgwuWkecNVt4X4P7vpuFBKCWIuR44="
         height="200"
       ></v-parallax>
 
-      <v-card-title> {{name}} </v-card-title>
-      <v-card-subtitle> Belt id {{id}} </v-card-subtitle>
+      <v-card-title> {{ name }} </v-card-title>
+      <v-card-subtitle> Belt id {{ id }} </v-card-subtitle>
 
       <v-card-actions>
         <v-tooltip bottom>
@@ -29,29 +28,25 @@
         </v-tooltip>
 
         <v-spacer></v-spacer>
-
       </v-card-actions>
-
     </v-card>
   </v-container>
 </template>
 
 <script>
-
 export default {
   name: "HistoryCard",
   props: {
-      id: {
-        type: String
-      },
-      name:{
-        type: String
-      }
+    id: {
+      type: String,
     },
+    name: {
+      type: String,
+    },
+  },
   components: {},
 
-  data: () => ({
-  }),
+  data: () => ({}),
 
   computed: {
     storeDevice() {
@@ -59,20 +54,19 @@ export default {
     },
   },
   methods: {
-    deleteHistoryDevice(id){
+    deleteHistoryDevice(id) {
       let i = 0;
-      while (i < this.$store.getters.getHistoryBluetoothBelt.length){
-        if(this.$store.getters.getHistoryBluetoothBelt[i].id == id){
+      while (i < this.$store.getters.getHistoryBluetoothBelt.length) {
+        if (this.$store.getters.getHistoryBluetoothBelt[i].id == id) {
           break;
         }
         i++;
       }
-      this.$store.dispatch("deleteHistoryDevice",i);
-    }
+      this.$store.dispatch("deleteHistoryDevice", i);
+    },
   },
 };
 </script>
 
 <style scoped>
-
 </style>

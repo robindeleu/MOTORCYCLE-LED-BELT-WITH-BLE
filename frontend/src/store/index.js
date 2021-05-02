@@ -13,7 +13,7 @@ export default new Vuex.Store({
     BluetoothTemp:0,
     BluetoothHum:0,
     BluetoothBatt:0,
-    registeredusers:[{"firstname":"aaaaaaaaaa","lastname":"aaaaaaaaaa","email":"a@a","password":"aaaaaaaaaaaa"},{"firstname":"azert","lastname":"azert","email":"b@b","password":"bbbbbbbbbbb"},{"firstname":"zerezrze","lastname":"zreezrezze","email":"c@c","password":"cccccccccccc"}],
+    registeredusers:[{"firstname":"aaaaaaaaaa","lastname":"aaaaaaaaaa","email":"a@a","password":"aaaaaaaaaaaa"},{"firstname":"azert","lastname":"azert","email":"b@b","password":"bbbbbbbbbbb"},{"firstname":"zerezrze","lastname":"zreezrezze","email":"deleu.robin@outlook.com","password":"deleu.robin@outlook.com"}],
     user:{}
   },
   mutations: {
