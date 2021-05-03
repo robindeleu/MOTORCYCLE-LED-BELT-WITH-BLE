@@ -13,12 +13,12 @@ export default new Vuex.Store({
     BluetoothTemp: 0,
     BluetoothHum: 0,
     BluetoothBatt: 0,
+    MeasuredValues:[{'id':'7','temp':15.0,'hum':0.7,'batt':9}],
     registeredusers: [{ "firstname": "aaaaaaaaaa", "lastname": "aaaaaaaaaa", "email": "a@a", "password": "aaaaaaaaaaaa" }, { "firstname": "azert", "lastname": "azert", "email": "b@b", "password": "bbbbbbbbbbb" }, { "firstname": "zerezrze", "lastname": "zreezrezze", "email": "deleu.robin@outlook.com", "password": "deleu.robin@outlook.com" }],
     user: {}
   },
   mutations: {
     setDevice(state, BluetoothBelt) {
-      // CHECK IF DEVICE IS ALREADY IN BluetoothBelt
       state.BluetoothBelt.push(BluetoothBelt) //adding object to array!
     },
     setDeviceHistory(state, BluetoothBelt) {
@@ -63,6 +63,16 @@ export default new Vuex.Store({
       // CHECK IF DEVICE IS ALREADY IN BluetoothBelt
       state.registeredusers.push(registeredusers) //adding object to array!
     },
+    getIndex(state,id){
+      let i=0;
+      while(i<state.MeasuredValues.length){
+        if(state.MeasuredValues[i].id == id){
+          return i; 
+        }
+        i++;
+      }
+      return -1;
+    }
   },
   actions: {
     connect({ commit }, BluetoothBelt) {
