@@ -5,10 +5,10 @@
       height="450"
     >
       <v-overlay value="true" opacity="0.4" absolute>
-        <v-toolbar-title class="text-center ma-3">
+        <v-toolbar-title class="text-center ma-3" >
           <h2>Please register</h2>
         </v-toolbar-title>
-        <div class="text-center ma-3">
+        <div class="text-center ma-3" @keyup.enter="register">
           <v-text-field
             prepend-icon="mdi-account"
             v-model="userobject.firstname"

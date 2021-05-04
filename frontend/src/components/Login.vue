@@ -5,7 +5,7 @@
       height="300"
     >
       <v-overlay value="true" opacity="0.40" absolute>
-        <div class="text-center ma-3">
+        <div class="text-center ma-3" @keyup.enter="login">
           <v-text-field
             prepend-icon="mdi-email"
             single-line
