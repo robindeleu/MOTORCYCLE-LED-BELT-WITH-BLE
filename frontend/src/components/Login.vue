@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import Crypto from "crypto";
 export default {
   name: "Login",
   components: {},
@@ -81,6 +82,8 @@ export default {
   methods: {
     async login() {
       console.log("...Trying to login ....");
+      this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
+      this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
       console.log(this.userobject);
       this.registerdata = this.$store.getters.getRegisteredusers;
       this.registerlength = this.registerdata.length;
