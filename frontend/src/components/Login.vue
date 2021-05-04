@@ -9,7 +9,7 @@
           <v-text-field
             prepend-icon="mdi-email"
             single-line
-            v-model="userobject.email"
+            v-model="textfieldemail"
             label="Email"
             :rules="emailRules"
             required
@@ -17,7 +17,7 @@
           <v-text-field
             prepend-icon="mdi-wrench"
             single-line
-            v-model="userobject.password"
+            v-model="textfieldpassword"
             label="Password"
             :rules="passwordRules"
             required
@@ -68,6 +68,8 @@ export default {
       registerdata: [],
       registerlength: 0,
       i: 0,
+      textfieldemail: "",
+      textfieldpassword:"",
       userobject: { email: "", password: "" },
       emailRules: [
         (v) => !!v || "E-mail is required",
@@ -82,6 +84,9 @@ export default {
   methods: {
     async login() {
       console.log("...Trying to login ....");
+      this.userobject.password = this.textfieldemail
+      this.userobject.email = this.textfieldpassword
+
       this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
       this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
       console.log(this.userobject);
