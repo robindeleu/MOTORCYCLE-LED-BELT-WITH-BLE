@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import Crypto from "crypto";
 export default {
   name: "Registercomp",
   components: {},
@@ -84,6 +85,10 @@ export default {
   },
   methods: {
     async register() {
+      console.log("***Hashing password***");
+      this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
+      this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
+      console.log(this.userobject.email);
       console.log("Trying to register user ...");
       console.log(this.userobject);
       this.$store.dispatch("storeregisteredusers", this.userobject);

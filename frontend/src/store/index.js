@@ -14,7 +14,7 @@ export default new Vuex.Store({
     BluetoothHum: 0,
     BluetoothBatt: 0,
     MeasuredValues:[{'id':'7','temp':15.0,'hum':0.7,'batt':9}],
-    registeredusers: [{ "firstname": "aaaaaaaaaa", "lastname": "aaaaaaaaaa", "email": "a@a", "password": "aaaaaaaaaaaa" }, { "firstname": "azert", "lastname": "azert", "email": "b@b", "password": "bbbbbbbbbbb" }, { "firstname": "zerezrze", "lastname": "zreezrezze", "email": "deleu.robin@outlook.com", "password": "deleu.robin@outlook.com" }],
+    registeredusers: [{ "firstname": "deleu.robin@outlook.com", "lastname": "deleu.robin@outlook.com", "email": "151f43d51a7102a000f231c753a68ba8064f954766b6b42ef9b14503b64d1644", "password": "151f43d51a7102a000f231c753a68ba8064f954766b6b42ef9b14503b64d1644" }],
     user: {}
   },
   mutations: {
