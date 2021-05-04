@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
+  strict: true,
   state: {
     BluetoothBelt: [],
     HistoryBluetoothBelt: [{ 'id': '5', 'name': 'Device' }, { 'id': '3', 'name': 'Device' }],
@@ -13,7 +16,7 @@ export default new Vuex.Store({
     BluetoothTemp: 0,
     BluetoothHum: 0,
     BluetoothBatt: 0,
-    MeasuredValues:[{'id':'7','temp':15.0,'hum':0.7,'batt':9}],
+    MeasuredValues: [{ 'id': '7', 'temp': 15.0, 'hum': 0.7, 'batt': 9 }],
     registeredusers: [{ "firstname": "deleu.robin@outlook.com", "lastname": "deleu.robin@outlook.com", "email": "151f43d51a7102a000f231c753a68ba8064f954766b6b42ef9b14503b64d1644", "password": "151f43d51a7102a000f231c753a68ba8064f954766b6b42ef9b14503b64d1644" }],
     user: {}
   },
@@ -63,11 +66,11 @@ export default new Vuex.Store({
       // CHECK IF DEVICE IS ALREADY IN BluetoothBelt
       state.registeredusers.push(registeredusers) //adding object to array!
     },
-    getIndex(state,id){
-      let i=0;
-      while(i<state.MeasuredValues.length){
-        if(state.MeasuredValues[i].id == id){
-          return i; 
+    getIndex(state, id) {
+      let i = 0;
+      while (i < state.MeasuredValues.length) {
+        if (state.MeasuredValues[i].id == id) {
+          return i;
         }
         i++;
       }
