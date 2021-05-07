@@ -102,11 +102,10 @@ export default {
                                                 let batlevel = values[0]
                                                 console.log("Batterylevel: NOTIFICATION", batlevel, "%")
                                                 store.dispatch("storeBluetoothBatt", batlevel);
-                                          })
+                                          }).then(function(){store.dispatch("updateMeasuredValues",device.id)});
                                     })
                                     
-                                    .then(console.log("test this"));
-                                    store.dispatch("updateMeasuredValues",device.id);
+                                    
                               })
                               console.log("PrimaryService", server) // Store service data in Store (BluetoothData)
                         }); // Connect device

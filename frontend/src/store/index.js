@@ -68,10 +68,11 @@ export default new Vuex.Store({
       state.registeredusers.push(registeredusers) //adding object to array!
     },
     updateMeasuredValues(state, id){
+      console.log(id);
       let i = 0;
       let idFound = false;
-      while(i<state.BluetoothBelt.length){
-        if(state.BluetoothBelt[i].id == id){
+      while(i<state.MeasuredValues.length){
+        if(state.MeasuredValues[i].id == id){
           idFound = true;
           break;
         }
