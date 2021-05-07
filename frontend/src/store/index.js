@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-//import createPersistedState from "vuex-persistedstate"
+import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  //plugins: [createPersistedState()],
+  plugins: [createPersistedState()],
   strict: true,
   state: {
     BluetoothBelt: [{'id': '7', 'name': 'Device' }, {'id':'3','name':'SecondDevice'}],
@@ -24,6 +24,9 @@ export default new Vuex.Store({
   mutations: {
     setDevice(state, BluetoothBelt) {
       state.BluetoothBelt.push(BluetoothBelt) //adding object to array!
+    },
+    deleteAllDevices(state){
+      state.BluetoothBelt = []
     },
     setDeviceHistory(state, BluetoothBelt) {
       // CHECK IF DEVICE IS ALREADY IN HistoryBelt
@@ -133,6 +136,7 @@ export default new Vuex.Store({
     logout({ commit }) {
       console.log(`Clearing user ...`);
       commit("setUser", {});
+      commit("deleteAllDevices");
       console.log(`User in Store after : logout`);
     },
     storeregisteredusers({ commit }, registeredusers) {
