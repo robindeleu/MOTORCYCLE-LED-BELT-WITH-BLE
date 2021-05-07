@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-//import createPersistedState from "vuex-persistedstate"
+import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  //plugins: [createPersistedState()],
+  plugins: [createPersistedState()],
   strict: true,
   state: {
     BluetoothBelt: [{'id': '7', 'name': 'Device' }, {'id':'3','name':'SecondDevice'}],
@@ -45,17 +45,49 @@ export default new Vuex.Store({
     deleteDevice(state, index) {
       state.BluetoothBelt.splice(index, 1);
     },
-    setBluetoothTemp(state, BluetoothTemp) {
+    setBluetoothTemp(state, tempObj) {
       // state.BluetoothTemp.push(BluetoothTemp)
-      state.BluetoothTemp = BluetoothTemp
+      if(tempObj.index<0){
+        state.MeasuredValues.push(
+          {
+            'id':tempObj.id,
+            'temp':tempObj.temp,
+            'hum':0,
+            'batt':0
+          }
+        );
+      }
+      else{
+        state.MeasuredValues[tempObj.index].temp = tempObj.temp;
+      }
     },
-    setBluetoothHum(state, BluetoothHum) {
+    setBluetoothHum(state, humObj) {
       // state.BluetoothHum.push(BluetoothHum)
-      state.BluetoothHum = BluetoothHum
+      if(humObj.index<0){
+        state.MeasuredValues.push({
+          'id':humObj.id,
+          'temp':0,
+          'hum':humObj.hum,
+          'batt':0
+        })
+      }
+      else{
+        state.MeasuredValues[humObj.index].hum = humObj.hum;
+      }
     },
-    setBluetoothBatt(state, BluetoothBatt) {
+    setBluetoothBatt(state, batlevelObj) {
       // state.BluetoothBatt.push(BluetoothBatt)
-      state.BluetoothBatt = BluetoothBatt
+      if(batlevelObj.index<0){
+        state.MeasuredValues.push({
+          'id':batlevelObj.id,
+          'temp':0,
+          'hum':0,
+          'batt':batlevelObj.batlevel
+        })
+      }
+      else{
+        state.MeasuredValues[batlevelObj.index].batt = batlevelObj.batlevel;
+      }
     },
     deleteDeviceHistory(state, index) {
       state.HistoryBluetoothBelt.splice(index, 1);
@@ -67,7 +99,7 @@ export default new Vuex.Store({
       // CHECK IF DEVICE IS ALREADY IN BluetoothBelt
       state.registeredusers.push(registeredusers) //adding object to array!
     },
-    updateMeasuredValues(state, id){
+    /*updateMeasuredValues(state, id){
       console.log(id);
       let i = 0;
       let idFound = false;
@@ -78,9 +110,6 @@ export default new Vuex.Store({
         }
         i++;
       }
-      console.log(state.MeasuredValues);
-      console.log(idFound);
-      console.log(i);
       if(idFound){
         state.MeasuredValues[i].temp = state.BluetoothTemp;
         state.MeasuredValues[i].hum = state.BluetoothHum;
@@ -97,7 +126,7 @@ export default new Vuex.Store({
         );
       }
     console.log(state.MeasuredValues);
-    }
+    }*/
   },
   actions: {
     connect({ commit }, BluetoothBelt) {
@@ -109,17 +138,17 @@ export default new Vuex.Store({
       console.log("Delete device out of the store...");
       commit("deleteDevice", index);
     },
-    storeBluetoothTemp({ commit }, BluetoothTemp) {
-      console.log("Save BluetoothTemp in store...", BluetoothTemp);
-      commit("setBluetoothTemp", BluetoothTemp);
+    storeBluetoothTemp({ commit }, tempObj) {
+      console.log("Save BluetoothTemp in store...", tempObj.temp);
+      commit("setBluetoothTemp", tempObj);
     },
-    storeBluetoothHum({ commit }, BluetoothHum) {
-      console.log("Save BluetoothHum in store...", BluetoothHum);
-      commit("setBluetoothHum", BluetoothHum);
+    storeBluetoothHum({ commit }, humObj) {
+      console.log("Save BluetoothHum in store...", humObj.hum);
+      commit("setBluetoothHum", humObj);
     },
-    storeBluetoothBatt({ commit }, BluetoothBatt) {
-      console.log("Save BluetoothBatt in store...", BluetoothBatt);
-      commit("setBluetoothBatt", BluetoothBatt);
+    storeBluetoothBatt({ commit }, batlevelObj) {
+      console.log("Save BluetoothBatt in store...", batlevelObj.batlevel);
+      commit("setBluetoothBatt", batlevelObj);
     },
     deleteHistoryDevice({ commit }, index) {
       console.log("Delete device out of history");
@@ -139,9 +168,9 @@ export default new Vuex.Store({
       console.log("Save registeredusers in store...", registeredusers);
       commit("setRegisteredusers", registeredusers);
     },
-    updateMeasuredValues({commit}, id){
+    /*updateMeasuredValues({commit}, id){
       commit("updateMeasuredValues", id);
-    }
+    }*/
   },
   getters: {
     getBluetoothBelt(state) {

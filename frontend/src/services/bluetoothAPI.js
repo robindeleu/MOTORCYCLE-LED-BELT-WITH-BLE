@@ -52,7 +52,7 @@ export default {
                                                 temp = (temp + 9).toFixed(2) // Correction factor of 18 compared to DHT11
                                                 // temp = temp.toFixed(2)
                                                 console.log("Temp: ", temp, "°C")
-                                                store.dispatch("storeBluetoothTemp", temp);
+                                                store.dispatch("storeBluetoothTemp", {"temp": temp, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
 
@@ -62,7 +62,7 @@ export default {
                                                 let hum = (values[0] + 18).toFixed(2) // Correction factor of 18 compared to DHT11
                                                 // let hum = (values[0] /100).toFixed(2)
                                                 console.log("hum:", hum, "%")
-                                                store.dispatch("storeBluetoothHum", hum);
+                                                store.dispatch("storeBluetoothHum", {"hum": hum, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
 
@@ -71,7 +71,7 @@ export default {
                                                 const values = new Int8Array(data.buffer);
                                                 let batlevel = values[0]
                                                 console.log("Batterylevel:", batlevel, "%")
-                                                store.dispatch("storeBluetoothBatt", batlevel);
+                                                store.dispatch("storeBluetoothBatt", {"batlevel": batlevel, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
 
@@ -82,7 +82,7 @@ export default {
                                                 temp = (temp + 9).toFixed(2) 
                                                 // temp = temp.toFixed(2)
                                                 console.log("Temp: NOTIFICATION", temp, "°C")
-                                                store.dispatch("storeBluetoothTemp", temp);
+                                                store.dispatch("storeBluetoothTemp", {"temp": temp, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
 
@@ -92,7 +92,7 @@ export default {
                                                 let hum = (values[0] + 18).toFixed(2) // Correction factor of 18 compared to DHT11
                                                 // let hum = (values[0] /100).toFixed(2)
                                                 console.log("hum: NOTIFICATION", hum, "%")
-                                                store.dispatch("storeBluetoothHum", hum);
+                                                store.dispatch("storeBluetoothHum", {"hum": hum, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
 
@@ -101,8 +101,8 @@ export default {
                                                 const values = new Int8Array(data.value.buffer);
                                                 let batlevel = values[0]
                                                 console.log("Batterylevel: NOTIFICATION", batlevel, "%")
-                                                store.dispatch("storeBluetoothBatt", batlevel);
-                                          }).then(function(){store.dispatch("updateMeasuredValues",device.id)});
+                                                store.dispatch("storeBluetoothBatt", {"batlevel": batlevel, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
+                                          })//.then(function(){store.dispatch("updateMeasuredValues",device.id)});
                                     })
                                     
                                     
@@ -148,7 +148,19 @@ export default {
                   i++;
             }  
             return -1;
+      },
+      getMeasuredValuesIndex(id, store){
+            let i = 0;
+            while (i < store.getters.getMeasuredValues.length) {
+                  if (store.getters.getMeasuredValues[i].id == id) {
+                        return i;
+                  }
+                  i++;
+            }  
+            return -1;
+            
       }
+
 
 }
 
