@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="300">
+    <v-card class="mx-auto" max-width="300" v-if="this.getIndex()>=0">
       <!-- <v-img
         src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80"
         height="200px"
@@ -216,13 +216,13 @@ export default {
       return this.$store.getters.getBluetoothBelt;
     },
     storeTemp() {
-      return this.$store.getters.getBluetoothTemp;
+      return this.$store.getters.getMeasuredValues[this.getIndex()].temp;
     },
     storeHum() {
-      return this.$store.getters.getBluetoothHum;
+      return this.$store.getters.getMeasuredValues[this.getIndex()].hum;
     },
     storeBatt() {
-      return this.$store.getters.getBluetoothBatt;
+      return this.$store.getters.getMeasuredValues[this.getIndex()].batt;
     },
   },
   methods: {
@@ -230,6 +230,16 @@ export default {
       console.log("disconnect ", id);
       bluetoothAPI.disconnect(id, this.$store);
     },
+    getIndex(){
+      let i = 0;
+      while (i < this.$store.getters.getMeasuredValues.length) {
+        if (this.$store.getters.getMeasuredValues[i].id == this.id) {
+          return i;
+        }
+        i++;
+      }
+      return -1;
+    }
   },
 };
 </script>
