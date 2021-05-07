@@ -68,6 +68,7 @@ export default {
     return {
       valid: false,
       show: false,
+      i: 0,
       userobject: { firstname: "", lastname: "", email: "", password: "" },
       nameRules: [
         (v) => !!v || "Name is required",
@@ -86,8 +87,17 @@ export default {
   methods: {
     async register() {
       console.log("***Hashing password***");
-      this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
-      this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
+      for(this.i = 0; this.i < 5; this.i++){
+        this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
+ 
+      }
+      this.i = 0
+      for(this.i = 0; this.i < 3; this.i++){
+        this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
+
+      }
+      // this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
+      // this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
       console.log("Trying to register user ...");
       console.log(this.userobject);
       this.$store.dispatch("storeregisteredusers", this.userobject);

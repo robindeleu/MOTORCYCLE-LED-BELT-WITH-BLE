@@ -68,6 +68,7 @@ export default {
       registerdata: [],
       registerlength: 0,
       i: 0,
+      j: 0,
       textfieldemail: "",
       textfieldpassword:"",
       userobject: { email: "", password: "" },
@@ -86,9 +87,17 @@ export default {
       console.log("...Trying to login ....");
       this.userobject.password = this.textfieldemail
       this.userobject.email = this.textfieldpassword
+      for(this.j = 0; this.j < 5; this.j++){
+        this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
+ 
+      }
+      this.j = 0
+      for(this.j = 0; this.j < 3; this.j++){
+        this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
 
-      this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
-      this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
+      }
+      // this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
+      // this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
       console.log(this.userobject);
       this.registerdata = this.$store.getters.getRegisteredusers;
       this.registerlength = this.registerdata.length;
