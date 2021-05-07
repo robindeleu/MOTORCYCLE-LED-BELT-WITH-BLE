@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="300" v-if="this.getIndex()>=0">
+    <v-card class="mx-auto" max-width="300" >
       <!-- <v-img
         src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80"
         height="200px"
@@ -33,12 +33,12 @@
         
         <v-spacer></v-spacer>
 
-        <v-btn icon @click="show = !show">
+        <v-btn icon @click="show = !show" v-if="this.getIndex()>=0">
           <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
         </v-btn>
       </v-card-actions>
 
-      <v-expand-transition>
+      <v-expand-transition v-if="this.getIndex()>=0">
         <div v-show="show">
           <v-container class="text-center">
             <!-- <p>props id: {{ id }}</p>
