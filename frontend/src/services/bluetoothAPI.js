@@ -104,14 +104,16 @@ export default {
                                                 store.dispatch("storeBluetoothBatt", batlevel);
                                           })
                                     })
+                                    
+                                    .then(console.log("test this"));
+                                    store.dispatch("updateMeasuredValues",device.id);
                               })
                               console.log("PrimaryService", server) // Store service data in Store (BluetoothData)
                         }); // Connect device
-                        store.dispatch("connect", device); // Save device to store
+                        store.dispatch("connect", device) // Save device to store
                   }).catch(error => {
                         console.log(error);
                   })
-
             }
 
             else {
@@ -121,19 +123,32 @@ export default {
 
       disconnect(id, store) {
             // device.gatt.disconnect();
-            let i = 0;
+
+            let i = this.getIndex(id, store);
+            /*let i = 0;
             while (i < store.getters.getBluetoothBelt.length) {
                   if (store.getters.getBluetoothBelt[i].id == id) {
                         break;
                   }
                   i++;
-            }
+            }*/
 
             let device = store.getters.getBluetoothBelt[i];
             if (device.gatt.connected) {
                   device.gatt.disconnect();
                   store.dispatch("disconnect", i);
             }
+      },
+
+      getIndex(id, store){
+            let i = 0;
+            while (i < store.getters.getBluetoothBelt.length) {
+                  if (store.getters.getBluetoothBelt[i].id == id) {
+                        return i;
+                  }
+                  i++;
+            }  
+            return -1;
       }
 
 }
