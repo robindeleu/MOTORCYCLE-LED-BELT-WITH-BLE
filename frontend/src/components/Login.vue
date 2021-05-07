@@ -89,7 +89,6 @@ export default {
       this.userobject.email = this.textfieldpassword
       for(this.j = 0; this.j < 5; this.j++){
         this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
- 
       }
       this.j = 0
       for(this.j = 0; this.j < 3; this.j++){
