@@ -1,0 +1,79 @@
+projectweek :
+
+
+
+  -leds : -> WS2812, 19mA/led , 8x leds. zou moeten kunnen gevoed worden met arduino, mss usb breakout als we een groot aantal strips nemen.
+             10 led bars -> 80 leds -> 1.6 A -> usb breakout + powerbank. 30mA -> ardiuno + mogelijk gsm opladen. -> 10k of 15k mAh bank;
+             aansluiten -> genoeg pinnen?
+
+
+
+  -Accelometer : (type?) versnellings meter om mogelijk automatisch de lichten met helderheid te veranderen. nog meer research required
+
+  -arduino nano : bluetooth link leggen app. aansluiten en regelen leds, versnellings meter
+
+  -water dicht -> epoxy/ zak
+
+
+
+
+
+
+
+
+
+problemen :
+
+
+opstelling :   - Batterij level meten -> opbreken powerbank?
+               - 1 lichtsensor -> verkeerde waarde opgelot door meerdere sensors
+               - licht sensor kleine connector -> tussen stuk? --> jumper kabels, deftiger met pcb
+               - arduino nano 5V pin not connected -> double checked with schematic and soldered it
+               - powerbank goes sleep since arduino doesnt draw enough power -> passive resistor or get a dumb powerbank
+               -
+
+arduino nano : - com poort mismatch -> reset button and open monitor asap.
+               - Bleutooth led not working
+               - WARNING: library ArduinoBLE claims to run on samd, megaavr, mbed, apollo3 architecture(s) and
+                 may be incompatible with your current board which runs on mbed_nano architecture(s). --> maakt niet veel uit zo ver of ik zie
+               - Error compiling for board Arduino Nano 33 BLE.
+
+
+Code :         - mis matched naam in code, waardoor geen batterij value werd gedeeld -> naam veranderen
+
+               - ging niet op batterij omdat er geen serial connection was door while (!serial). -> fixed door removal van dat stuk code
+
+               - 16-bit UUID Numbers voor licht moeilijk vind baar. -> door sturing onder andere service?
+
+               - Arduino: 1.8.13 (Windows 10), Board: "Arduino Nano 33 BLE" -> nieuwe libraries installeren
+
+               - C:\Users\baste\AppData\Local\Arduino15\packages\arduino\hardware\mbed_nano\2.0.0\cores\arduino/Arduino.h:83:16:   note: forward declaration of 'PinDescription {aka struct _PinDescription}'
+
+                typedef struct _PinDescription PinDescription;
+
+                ^~~~~~~~~~~~~~~
+
+                This report would have more information with
+                "Show verbose output during compilation"
+                option enabled in File -> Preferences.
+                --> neopixel lib niet werkende op nano 33 ble sense? https://arduino.stackexchange.com/questions/22437/error-invalid-use-of-incomplete-type-and-forward-declaration
+                https://forum.arduino.cc/t/nano-33-ble-neopixel-strip-failure-solved/621618
+
+
+                - seriele communicatie werkde maar half. --> opgelost unknown
+
+                - Neopixel lichtde niet op, wou niet werken (leds werken, getest door default program) --> op nieuw copy paste van initializatie
+
+                -
+
+
+fixes  and examples :   https://github.com/yene/Nano-33-BLE-Sense
+                        https://forum.arduino.cc/t/nano-33-ble-sense-serial-monitor-issue/617862
+                        https://create.arduino.cc/projecthub/electropeak/neopixel-how-to-control-ws2812-rgb-led-w-arduino-46c08f
+
+
+
+
+
+
+extras : adding gesture control -> gesture sensor

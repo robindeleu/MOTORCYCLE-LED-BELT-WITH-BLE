@@ -32,4 +32,3 @@ Robin en Emma: De fout bij het filteren van de Bluetooth devices is opgelost. He
 De presentatie voor morgen werd kort overlopen, nog enkele details moeten toegevoegd worden.
 
 Roelten zal zijn updates op GitHub zetten.
-
