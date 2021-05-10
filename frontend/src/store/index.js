@@ -135,7 +135,7 @@ export default new Vuex.Store({
     connect({ commit }, BluetoothBelt) {
       console.log("Save device in store...", BluetoothBelt);
       commit("setDevice", BluetoothBelt);
-      commit("setDeviceHistory", BluetoothBelt);
+      commit("setDeviceHistory", {'id' : BluetoothBelt.id, 'name': BluetoothBelt.name});
     },
     disconnect({ commit }, index) {
       console.log("Delete device out of the store...");
