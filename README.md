@@ -45,6 +45,16 @@ The legislation for wearing lighting on clothes for cyclists and motorcyclists o
 ## Frontend
 
 [This is the link](https://ledbelt.netlify.app/) to the website that you can use to connect to you're ledbelt.
+In the website you can create or sign in with a user. After login you are able to see all data, connect to ledbelts,...
+If you don't login you're not able to do anything on the site.
+The data you can see is the temperature, humidity. There is also functionality to create you're own color and change the brightness but this code is not ready yet on the frontend and arduino.
+There is also a possibility to install the "app" like a PWA.
+
+## Arduino
+
+![arduino schema](./img/arduino-scheme.jpg).
+This is the theoretical scheme. On the arduino nano there is a program running that sends the lightsensor value, temperature, humidity and battery level over bluetooth.
+On the arduino uno there is a program running that listens to the serial interface and changes the color of the LED's or brightness.
 
 ## Built With
 
