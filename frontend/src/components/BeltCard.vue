@@ -1,10 +1,6 @@
 <template>
   <v-container>
     <v-card class="mx-auto" max-width="300">
-      <!-- <v-img
-        src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80"
-        height="200px"
-      ></v-img> -->
       <v-parallax
         src="https://media.istockphoto.com/photos/watercolor-textured-background-picture-id887755698?k=6&m=887755698&s=612x612&w=0&h=_yEUF8gLpWjZv5IgwuWkecNVt4X4P7vpuFBKCWIuR44="
         height="200"
@@ -43,8 +39,6 @@
       <v-expand-transition v-if="this.getIndex() >= 0">
         <div v-show="show">
           <v-container class="text-center">
-            <!-- <p>props id: {{ id }}</p>
-            <p>props name: {{ name }}</p> -->
 
             <h3>Temperature</h3>
             <v-progress-circular
@@ -72,19 +66,6 @@
             <v-progress-linear v-model="storeBatt" height="25">
               <strong>{{ Math.ceil(storeBatt) }}%</strong>
             </v-progress-linear>
-            <!-- <v-sparkline
-              :value="value"
-              :gradient="gradient"
-              :smooth="radius || false"
-              :padding="padding"
-              :line-width="width"
-              :stroke-linecap="lineCap"
-              :gradient-direction="gradientDirection"
-              :fill="fill"
-              :type="type"
-              :auto-line-width="autoLineWidth"
-              auto-draw
-            ></v-sparkline> -->
           </v-container>
 
           <v-container class="text-center">
