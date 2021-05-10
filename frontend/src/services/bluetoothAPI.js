@@ -102,7 +102,7 @@ export default {
                                                 let batlevel = values[0]
                                                 console.log("Batterylevel: NOTIFICATION", batlevel, "%")
                                                 store.dispatch("storeBluetoothBatt", {"batlevel": batlevel, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
-                                          })//.then(function(){store.dispatch("updateMeasuredValues",device.id)});
+                                          })
                                     })
                                     
                                     
@@ -121,16 +121,8 @@ export default {
       },
 
       disconnect(id, store) {
-            // device.gatt.disconnect();
 
             let i = this.getIndex(id, store);
-            /*let i = 0;
-            while (i < store.getters.getBluetoothBelt.length) {
-                  if (store.getters.getBluetoothBelt[i].id == id) {
-                        break;
-                  }
-                  i++;
-            }*/
 
             let device = store.getters.getBluetoothBelt[i];
             if (device.gatt.connected) {

@@ -8,17 +8,13 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   strict: true,
   state: {
-    BluetoothBelt: [{'id': '7', 'name': 'Device' }, {'id':'3','name':'SecondDevice'}],
-    HistoryBluetoothBelt: [{ 'id': '5', 'name': 'Device' }, { 'id': '3', 'name': 'Device' }],
-    // BluetoothTemp:[],
-    // BluetoothHum:[],
-    // BluetoothBatt:[]
+    BluetoothBelt: [],
+    HistoryBluetoothBelt: [],
     BluetoothTemp: 0,
     BluetoothHum: 0,
     BluetoothBatt: 0,
-    MeasuredValues: [{ 'id': '7', 'temp': 15.0, 'hum': 0.7, 'batt': 9 },{ 'id': '3', 'temp': 12.0, 'hum': 0.6, 'batt': 1 }],
-    registeredusers: [{ "firstname": "deleu.robin@outlook.com", "lastname": "deleu.robin@outlook.com", "email": "151f43d51a7102a000f231c753a68ba8064f954766b6b42ef9b14503b64d1644", "password": "151f43d51a7102a000f231c753a68ba8064f954766b6b42ef9b14503b64d1644" },{"firstname":"test", "lastname":"test", "email":"f660ab912ec121d1b1e928a0bb4bc61b15f5ad44d5efdc4e1c92a25e99b8e44a", "password":"f660ab912ec121d1b1e928a0bb4bc61b15f5ad44d5efdc4e1c92a25e99b8e44a"}],
-    // registeredusers: [],
+    MeasuredValues: [],
+    registeredusers: [],
     user: {}
   },
   mutations: {
@@ -49,7 +45,6 @@ export default new Vuex.Store({
       state.BluetoothBelt.splice(index, 1);
     },
     setBluetoothTemp(state, tempObj) {
-      // state.BluetoothTemp.push(BluetoothTemp)
       if(tempObj.index<0){
         state.MeasuredValues.push(
           {
@@ -65,7 +60,6 @@ export default new Vuex.Store({
       }
     },
     setBluetoothHum(state, humObj) {
-      // state.BluetoothHum.push(BluetoothHum)
       if(humObj.index<0){
         state.MeasuredValues.push({
           'id':humObj.id,
@@ -79,7 +73,6 @@ export default new Vuex.Store({
       }
     },
     setBluetoothBatt(state, batlevelObj) {
-      // state.BluetoothBatt.push(BluetoothBatt)
       if(batlevelObj.index<0){
         state.MeasuredValues.push({
           'id':batlevelObj.id,
@@ -99,37 +92,8 @@ export default new Vuex.Store({
       state.user = user;
     },
     setRegisteredusers(state, registeredusers) {
-      // CHECK IF DEVICE IS ALREADY IN BluetoothBelt
       state.registeredusers.push(registeredusers) //adding object to array!
     },
-    /*updateMeasuredValues(state, id){
-      console.log(id);
-      let i = 0;
-      let idFound = false;
-      while(i<state.MeasuredValues.length){
-        if(state.MeasuredValues[i].id == id){
-          idFound = true;
-          break;
-        }
-        i++;
-      }
-      if(idFound){
-        state.MeasuredValues[i].temp = state.BluetoothTemp;
-        state.MeasuredValues[i].hum = state.BluetoothHum;
-        state.MeasuredValues[i].batt = state.BluetoothBatt;
-      }
-      else{
-        state.MeasuredValues.push(// CHECK IF ID IS NOT PRESENT YET
-          {
-            'id':id,
-            'temp':state.BluetoothTemp,
-            'hum':state.BluetoothHum,
-            'batt':state.BluetoothBatt
-          }
-        );
-      }
-    console.log(state.MeasuredValues);
-    }*/
   },
   actions: {
     connect({ commit }, BluetoothBelt) {
@@ -175,9 +139,6 @@ export default new Vuex.Store({
     deleteDevices({ commit }) {
       commit("deleteAllDevices");
     }
-    /*updateMeasuredValues({commit}, id){
-      commit("updateMeasuredValues", id);
-    }*/
   },
   getters: {
     getBluetoothBelt(state) {
@@ -186,17 +147,6 @@ export default new Vuex.Store({
     getHistoryBluetoothBelt(state) {
       return state.HistoryBluetoothBelt;
     },
-    /*getBluetoothTemp(state, i) {
-      console.log(i);
-      console.log(state.MeasuredValues[0])
-      return state.MeasuredValues[i].temp;
-    },
-    getBluetoothHum(state, i) {
-      return state.MeasuredValues[i].hum;
-    },
-    getBluetoothBatt(state, i) {
-      return state.MeasuredValues[i].batt;
-    },*/
     getUser(state) {
       return state.user;
     },

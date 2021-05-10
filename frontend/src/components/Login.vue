@@ -84,7 +84,6 @@ export default {
   },
   methods: {
     async login() {
-      console.log("...Trying to login ....");
       this.userobject.password = this.textfieldemail
       this.userobject.email = this.textfieldpassword
       for(this.j = 0; this.j < 5; this.j++){
@@ -109,13 +108,11 @@ export default {
           console.log("email gelijk aan elkaar, PASSWOORD gelijk aan elkaar");
           this.$store.dispatch("login", this.userobject);
         } else if (this.registerdata[this.i].email === this.userobject.email) {
-          console.log("password is wrong");
           this.text = "Please check password";
           this.snackbar = true;
         } else if (
           this.registerdata[this.i].password === this.userobject.password
         ) {
-          console.log("Email is wrong");
           this.text = "Please check email";
           this.snackbar = true;
         }

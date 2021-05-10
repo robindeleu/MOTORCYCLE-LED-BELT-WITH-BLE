@@ -182,17 +182,14 @@ export default {
 
   created(){
     this.$store.dispatch("deleteDevices");
-    console.log("Deleting devices", this.$store.getters.getBluetoothBelt)
   },
 
   methods: {
     showAllDevices() {
       // bluetoothAPI.showAllDevices(this.$store);
       bluetoothAPI.showFilteredPrefixDevices("LEDBELT", this.$store);
-      // bluetoothAPI.showFilteredNameDevices("LE-Bose Robin", this.$store)
     },
     logout(){
-      console.log("***Logout user***")
       this.$store.dispatch("logout");
       this.$router.push('/loginpage')
     }

@@ -31,7 +31,6 @@ export default {
 
     computed: {
         storeDevice() {
-            console.log(this.$store.getters.getHistoryBluetoothBelt);
             return this.$store.getters.getHistoryBluetoothBelt;
     },
   },
