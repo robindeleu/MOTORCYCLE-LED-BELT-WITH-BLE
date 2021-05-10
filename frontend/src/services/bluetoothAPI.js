@@ -40,7 +40,6 @@ export default {
 
       requestDevice(options, store) {
             if (this.isWebBLEAvailable) {
-                  console.log("Searching devices");
 
                   navigator.bluetooth.requestDevice(options).then(device => {
                         device.gatt.connect().then(server => {

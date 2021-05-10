@@ -94,9 +94,6 @@ export default {
         this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
 
       }
-      // this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
-      // this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
-      console.log(this.userobject);
       this.registerdata = this.$store.getters.getRegisteredusers;
       this.registerlength = this.registerdata.length;
 
@@ -105,7 +102,6 @@ export default {
           this.registerdata[this.i].email === this.userobject.email &&
           this.registerdata[this.i].password === this.userobject.password
         ) {
-          console.log("email gelijk aan elkaar, PASSWOORD gelijk aan elkaar");
           this.$store.dispatch("login", this.userobject);
         } else if (this.registerdata[this.i].email === this.userobject.email) {
           this.text = "Please check password";
@@ -120,7 +116,6 @@ export default {
       try {
         this.$router.push("/");
       } catch (error) {
-        console.log("Login failed");
         console.log(error);
       }
     },

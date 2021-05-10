@@ -8,9 +8,6 @@
             <h1>No devices in history</h1>
         </v-overlay>
       </v-parallax>
-
-      
-      
     </v-card>
   </v-container>
 </template>

@@ -96,16 +96,11 @@ export default {
         this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
 
       }
-      // this.userobject.password = Crypto.createHash("sha256").update(this.userobject.password).digest("hex")
-      // this.userobject.email = Crypto.createHash("sha256").update(this.userobject.email).digest("hex")
-      console.log("Trying to register user ...");
-      console.log(this.userobject);
       this.$store.dispatch("storeregisteredusers", this.userobject);
       this.$store.dispatch("login", this.userobject);
       try {
         this.$router.push("/");
       } catch (error) {
-        console.log("Register failed");
         console.log(error);
       }
     },

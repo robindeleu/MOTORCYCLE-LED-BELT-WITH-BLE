@@ -97,43 +97,32 @@ export default new Vuex.Store({
   },
   actions: {
     connect({ commit }, BluetoothBelt) {
-      console.log("Save device in store...", BluetoothBelt);
       commit("setDevice", BluetoothBelt);
       commit("setDeviceHistory", {'id' : BluetoothBelt.id, 'name': BluetoothBelt.name});
     },
     disconnect({ commit }, index) {
-      console.log("Delete device out of the store...");
       commit("deleteDevice", index);
     },
     storeBluetoothTemp({ commit }, tempObj) {
-      console.log("Save BluetoothTemp in store...", tempObj.temp);
       commit("setBluetoothTemp", tempObj);
     },
     storeBluetoothHum({ commit }, humObj) {
-      console.log("Save BluetoothHum in store...", humObj.hum);
       commit("setBluetoothHum", humObj);
     },
     storeBluetoothBatt({ commit }, batlevelObj) {
-      console.log("Save BluetoothBatt in store...", batlevelObj.batlevel);
       commit("setBluetoothBatt", batlevelObj);
     },
     deleteHistoryDevice({ commit }, index) {
-      console.log("Delete device out of history");
       commit("deleteDeviceHistory", index);
     },
     login({ commit }, user) {
-      console.log(`Storing user ...`);
-      console.log(`User in Store during login`, user);
       commit("setUser", user);
     },
     logout({ commit }) {
-      console.log(`Clearing user ...`);
       commit("setUser", {});
       commit("deleteAllDevices");
-      console.log(`User in Store after : logout`);
     },
     storeregisteredusers({ commit }, registeredusers) {
-      console.log("Save registeredusers in store...", registeredusers);
       commit("setRegisteredusers", registeredusers);
     },
     deleteDevices({ commit }) {

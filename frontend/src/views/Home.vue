@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 
 import BeltCard from "../components/BeltCard.vue";
 import DefaultCard from "../components/DefaultCard.vue";

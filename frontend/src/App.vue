@@ -186,7 +186,6 @@ export default {
 
   methods: {
     showAllDevices() {
-      // bluetoothAPI.showAllDevices(this.$store);
       bluetoothAPI.showFilteredPrefixDevices("LEDBELT", this.$store);
     },
     logout(){
