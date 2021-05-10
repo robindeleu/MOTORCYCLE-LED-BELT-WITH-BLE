@@ -14,43 +14,43 @@ void setup() {
 
 void loop() {
   Serial.begin(9600);
-  int button = digitalRead(pin);
+//  int button = digitalRead(pin);
+//
+//  if (button == LOW) {
+//    if ( counter == 0) {
+//      Serial.println(message);
+//      counter++;
+//    } else if (counter == 1) {
+//      Serial.println(message2);
+//      counter++;
+//    } else if (counter == 2) {
+//      Serial.println(message3);
+//      counter++;
+//
+//    }
+//    else if (counter == 3) {
+//      Serial.println(message4);
+//      counter++;
+//
+//    }
+//    else {
+//      Serial.println(message5);
+//      counter = 0;
+//    }
+//
+//
+//
+//  }
 
-  if (button == LOW) {
-    if ( counter == 0) {
-      Serial.println(message);
-      counter++;
-    } else if (counter == 1) {
-      Serial.println(message2);
-      counter++;
-    } else if (counter == 2) {
-      Serial.println(message3);
-      counter++;
-
-    }
-    else if (counter == 3) {
-      Serial.println(message4);
-      counter++;
-
-    }
-    else {
-      Serial.println(message5);
-      counter = 0;
-    }
-
-
-
-  }
-
-  //  // put your main code here, to run repeatedly:
-  //  Serial.println(message);
-  //  delay(5000);
-  //  Serial.println(message2);
-  //  delay(5000);
-  //  Serial.println(message3);
-  //  delay(5000);
-  //  Serial.println(message4);
-  //  delay(5000);
+    // put your main code here, to run repeatedly:
+    Serial.println(message);
+    delay(5000);
+    Serial.println(message2);
+    delay(5000);
+    Serial.println(message3);
+    delay(5000);
+    Serial.println(message4);
+    delay(5000);
 
   Serial.end();
   delay(200);
