@@ -180,6 +180,11 @@ export default {
     },
   },
 
+  created(){
+    this.$store.dispatch("deleteDevices");
+    console.log("Deleting devices", this.$store.getters.getBluetoothBelt)
+  },
+
   methods: {
     showAllDevices() {
       // bluetoothAPI.showAllDevices(this.$store);

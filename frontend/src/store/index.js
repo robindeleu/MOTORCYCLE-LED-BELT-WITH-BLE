@@ -172,6 +172,9 @@ export default new Vuex.Store({
       console.log("Save registeredusers in store...", registeredusers);
       commit("setRegisteredusers", registeredusers);
     },
+    deleteDevices({ commit }) {
+      commit("deleteAllDevices");
+    }
     /*updateMeasuredValues({commit}, id){
       commit("updateMeasuredValues", id);
     }*/

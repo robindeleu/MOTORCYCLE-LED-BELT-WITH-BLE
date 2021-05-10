@@ -49,7 +49,7 @@ export default {
                                           characteristicdata.readValue().then(data => {
                                                 const values = new Int16Array(data.buffer);
                                                 let temp = (values[0] / 100)
-                                                temp = (temp+11).toFixed(2) // Correction factor of 18 compared to DHT11
+                                                temp = (temp+6).toFixed(2) // Correction factor of 18 compared to DHT11
                                                 // temp = temp.toFixed(2)
                                                 console.log("Temp: ", temp, "°C")
                                                 store.dispatch("storeBluetoothTemp", {"temp": temp, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
@@ -59,7 +59,7 @@ export default {
                                     service.getCharacteristic(0x2A6F).then(characteristicdata => {
                                           characteristicdata.readValue().then(data => {
                                                 const values = new Int16Array(data.buffer);
-                                                let hum = (values[0] + 18).toFixed(2) // Correction factor of 18 compared to DHT11
+                                                let hum = (values[0] + 18.36).toFixed(2) // Correction factor of 18 compared to DHT11
                                                 // let hum = (values[0] /100).toFixed(2)
                                                 console.log("hum:", hum, "%")
                                                 store.dispatch("storeBluetoothHum", {"hum": hum, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
@@ -79,7 +79,7 @@ export default {
                                           characteristicdata.startNotifications().then(data => {
                                                 const values = new Int16Array(data.value.buffer);
                                                 let temp = (values[0] / 100)
-                                                temp = (temp +11).toFixed(2) 
+                                                temp = (temp +6).toFixed(2) 
                                                 // temp = temp.toFixed(2)
                                                 console.log("Temp: NOTIFICATION", temp, "°C")
                                                 store.dispatch("storeBluetoothTemp", {"temp": temp, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
@@ -89,7 +89,7 @@ export default {
                                     service.getCharacteristic(0x2A6F).then(characteristicdata => {
                                           characteristicdata.startNotifications().then(data => {
                                                 const values = new Int16Array(data.value.buffer);
-                                                let hum = (values[0] + 18).toFixed(2) // Correction factor of 18 compared to DHT11
+                                                let hum = (values[0] + 18.36).toFixed(2) // Correction factor of 18 compared to DHT11
                                                 // let hum = (values[0] /100).toFixed(2)
                                                 console.log("hum: NOTIFICATION", hum, "%")
                                                 store.dispatch("storeBluetoothHum", {"hum": hum, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
