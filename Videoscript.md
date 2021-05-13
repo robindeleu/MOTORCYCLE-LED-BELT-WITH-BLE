@@ -1,12 +1,23 @@
 # Video script
 
-## inleiding:
+## inleiding
+
 - doel waar wilden we raken.
 - Zichtbaarheid verhogen van zwakke weggebruikers zoals: fietsers, motorijders, wandelaars,...
 - Via app?
 - Verbinding met apparaat
 - Hoe tot stand gekomen?
 - Teamverdeling en wekelijkse targets
+
+## Ontwerp
+
+- zoals een fluohesje
+- links batterij of links en rechts voor gewichtsverdeling
+- rechts electronica
+- met velcro leds op kleven
+- sleuven voor kabels in te steken aan voor & achterkant
+- zoveelmogelijk plug and play om kabels aan te sluiten aan arduino (gewoon con)
+
 ## ICT
 Direct live demo met site
 - Beginnen met in te registreren.

@@ -48,7 +48,7 @@ export default {
                                           characteristicdata.readValue().then(data => {
                                                 const values = new Int16Array(data.buffer);
                                                 let temp = (values[0] / 100)
-                                                temp = (temp+6).toFixed(2)
+                                                temp = (temp-3.5).toFixed(2)
                                                 store.dispatch("storeBluetoothTemp", {"temp": temp, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
@@ -56,7 +56,7 @@ export default {
                                     service.getCharacteristic(0x2A6F).then(characteristicdata => {
                                           characteristicdata.readValue().then(data => {
                                                 const values = new Int16Array(data.buffer);
-                                                let hum = (values[0] + 18.36).toFixed(2)
+                                                let hum = (values[0] /200).toFixed(2)
                                                 store.dispatch("storeBluetoothHum", {"hum": hum, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
@@ -73,7 +73,7 @@ export default {
                                           characteristicdata.startNotifications().then(data => {
                                                 const values = new Int16Array(data.value.buffer);
                                                 let temp = (values[0] / 100)
-                                                temp = (temp +6).toFixed(2) 
+                                                temp = (temp-3.5).toFixed(2) 
                                                 store.dispatch("storeBluetoothTemp", {"temp": temp, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
@@ -81,7 +81,7 @@ export default {
                                     service.getCharacteristic(0x2A6F).then(characteristicdata => {
                                           characteristicdata.startNotifications().then(data => {
                                                 const values = new Int16Array(data.value.buffer);
-                                                let hum = (values[0] + 18.36).toFixed(2)
+                                                let hum = (values[0] /200).toFixed(2)
                                                 store.dispatch("storeBluetoothHum", {"hum": hum, "index": this.getMeasuredValuesIndex(device.id, store), "id": device.id});
                                           })
                                     })
