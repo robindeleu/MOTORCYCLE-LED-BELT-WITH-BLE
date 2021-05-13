@@ -20,13 +20,13 @@
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#Groepsleden">Group members</a></li>
-    <li><a href="#Project information"> Project information</a></li>
+    <li><a href="#Group-members">Group members</a></li>
+    <li><a href="#Project-information"> Project information</a></li>
     <li><a href="#Regulations">Regulations</a></li>
-    <li><a href="#Week report">Week report</a></li>
+    <li><a href="#Week-report">Week report</a></li>
     <li><a href="#Frontend">Frontend</a></li>
     <li><a href="#Arduino">Arduino</a></li>
-    <li><a href="#Built With">Built With</a></li>
+    <li><a href="#Built-With">Built With</a></li>
     <li><a href="#Authors">Authors</a></li>
     <li><a href="#License">License</a></li>
   </ol>
