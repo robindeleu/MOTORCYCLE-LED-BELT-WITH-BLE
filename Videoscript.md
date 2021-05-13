@@ -16,19 +16,24 @@
 - rechts electronica
 - met velcro leds op kleven
 - sleuven voor kabels in te steken aan voor & achterkant
-- zoveelmogelijk plug and play om kabels aan te sluiten aan arduino (gewoon con)
+- zoveelmogelijk plug and play om kabels aan te sluiten aan arduino (gewoon connectors voorzien)
 
 ## ICT
+
 Direct live demo met site
+
 - Beginnen met in te registreren.
 - Daarna tonen dat inloggen werkt (tonen banner bij fout passwoord of email)
 - Daarna verbinen met device en tonen van binnenkomende data
 - Tonen van kleuren veranderen + brightness bij layout, niet functioneel
 - Tonen history data
 - Uitloggen en tonen na uitloggen niets meer in Vuex store
+
 ## ELECTRONICA
+
 - Nano theoretisch uitleggen
 - Uno's demo tonen met seriele communicatie dat we LEDS RGB en helderheids values kunnen aanpassen afgankelijk van drukknop.
+
 ## Besluit
 
 Mooie PWA/website jammer dat we nog geen data kunnen zenden
