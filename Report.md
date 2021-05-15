@@ -57,13 +57,13 @@ Roelten: arduino nano leds proberen aan te sturen.
 
 Robin en Emma: Vue routing protection als user niet bestaat. Store veranderingen voor users. Login en register scherm maken. Data allemaal opslaan in de locale data van de pcif user not login. Store changes for users, adding loginscreen, registerscreen. Adding Vuex store to be saved in localstorage/cookie. 
 
-Roelten: arduino nano leds proberen aan te sturen lukte niet door library probleem. Op gelost door via seriele communicatie RGB en brightness waardes door te sturen.
+Roelten: arduino nano leds proberen aan te sturen lukte niet door library probleem. Opgelost door via seriele communicatie RGB en brightness waardes door te sturen.
 
 ## Meeting 9 10 Mei 8h15
 
 Robin en Emma: Bekijken code en powerpoint. Vervoledigen Readme en gitkraken board.
 
-Roelten: Arduino optimaliseren code seriele communicatie op trigger (nu button).
+Roelten: Arduino optimaliseren code seriële communicatie op trigger (nu button).
 
 ## Meeting 9 13 Mei 8h15
 

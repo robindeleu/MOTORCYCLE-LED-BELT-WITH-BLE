@@ -127,12 +127,12 @@ Here you actually see a list of all devices that are stored in the Vuex store th
 
 ![arduino schema](./img/arduino-scheme.jpg).
 
-This is the theoretical scheme. On the arduino nano there is a program running that sends the lightsensor value, temperature, humidity and battery level over bluetooth.
+This is the theoretical scheme. On the arduino nano there is a program running that sends the lightsensor value, temperature, humidity and battery level over Bluetooth.
 On the arduino uno there is a program running that listens to the serial interface and changes the color of the LED's or brightness.
 
 ### Setting up the Arduino project
 
-Here you must to make sure you installed all library's before you compile the code to the arduino's. You need to install 4 library's, they can be found in the library manager or you can download them as ZIP files and import them to the arduino IDE.
+Here you must make sure you installed all libraries before you compile the code to the arduino's. You need to install 4 libraries, they can be found in the library manager or you can download them as ZIP files and import them to the arduino IDE.
 
 * [Adafruit_DMA_neopixel_library](https://github.com/adafruit/Adafruit_NeoPixel/archive/master.zip)
 * [Arduino_APDS9960](https://www.arduino.cc/reference/en/libraries/adafruit-apds9960-library/)
@@ -141,8 +141,8 @@ Here you must to make sure you installed all library's before you compile the co
 
 ### Code explanation
 
-* Arduino nano: The arduino nano is used for the Bluetooth communication. It sends Temperature, humidity and battery level (analog pin 0) to the client if a device connect with it. It also send RGB values and brightness values to the arduino uno.
-* Arduino uno: The arduino uno receive the RGB and brightness values from the arduino nano and use that data to really change color and brightness on the adafruit neopixel led's on pin 8.
+* Arduino nano: The arduino nano is used for the Bluetooth communication. It sends Temperature, humidity and battery level (analog pin 0) to the client if a device connects with it. It also sends RGB values and brightness values to the arduino uno.
+* Arduino uno: The arduino uno receives the RGB and brightness values from the arduino nano and uses that data to really change color and brightness on the adafruit neopixel led's on pin 8.
 
 ## Built With
 
